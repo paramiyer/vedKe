@@ -29,7 +29,7 @@
 - `apps/web/src/components/ImageKaraokeViewer.tsx`: responsive image + SVG bbox overlay.
 - `apps/web/src/components/SanskritRenderer.tsx`: HTML Sanskrit renderer for `karaoke.json`, join-aware token spacing, codepoint/font debug toggles, and font self-test.
 - `apps/web/src/routes/SuktaKaraokePage.tsx`: `/suktas/:slug` route loader for karaoke JSON + renderer host.
-- `apps/web/src/routes/VisualPage.tsx`: `/slugs/:slug/visual` SVG page preview with scalable highlight overlays and local annotation export; defaults to page 2 (or second page entry) when available, loads `karaoke.json`, supports token-focused highlighting/mapping while annotating, colorizes text pixels in mapped regions (instead of only showing solid boxes), and provides play/pause token stepping at configurable tokens/sec.
+- `apps/web/src/routes/VisualPage.tsx`: `/slugs/:slug/visual` SVG page preview with scalable highlight overlays and local annotation export; defaults to page 2 (or second page entry) when available, loads `karaoke.json`, supports token-focused highlighting/mapping while annotating, colorizes text pixels in mapped regions (instead of only showing solid boxes), provides play/pause token stepping at configurable tokens/sec, and auto-scrolls the rendered PNG/SVG viewport to keep the active highlighted line pinned.
 - `apps/web/src/routes/AnnotatePage.tsx`: `/annotate` bbox draw + timing tap + export/import.
 - `apps/web/public/fonts/*.woff2`: locally bundled Noto Devanagari webfonts used by `.vedicText`.
 - `apps/web/public/suktas/manifest.json`: web-visible slug registry editable without code changes.
@@ -56,9 +56,9 @@
 - `services/aligner/`: placeholder Python service package.
 - `services/__init__.py`: marks `services` as an importable package root.
 - `services/itx_pipeline/__main__.py`: module entrypoint for `python -m services.itx_pipeline`.
-- `services/itx_pipeline/cli.py`: CLI surface for `build-tokens`, `validate-tokens`, `audit-charset`, `build-karaoke`, `build-visual`, `build-highlights`, and `sync-web`.
+- `services/itx_pipeline/cli.py`: CLI surface for `build-tokens`, `validate-tokens`, `audit-charset`, `build-karaoke`, `build-visual`, `build-highlights`, `build-pipeline` (end-to-end reusable run), and `sync-web`.
 - `services/itx_pipeline/visual.py`: visual pipeline (`.itx` -> PDF via itrans/pdflatex -> SVG pages via pdftocairo) and `visual.json` generation.
-- `services/itx_pipeline/highlights.py`: word-level visual highlight pipeline (PDF text-layer bboxes via `pdftotext`, sequential token alignment against `karaoke.json`, and `visual/highlights.json` generation).
+- `services/itx_pipeline/highlights.py`: word-level visual highlight pipeline (PDF text-layer bboxes via `pdftotext`, strict token alignment against `karaoke.json` as source of truth, token-vocab split handling for merged PDF words, and `visual/highlights.json` generation with propagated token `kind`).
 - `services/itx_pipeline/parser.py`: `.itx` content filtering, ITX->Devanagari conversion, tokenization, and tokens.json writer.
 - `services/itx_pipeline/validation.py`: token validation rules, audit reporting, and charset diagnostics.
 - `services/itx_pipeline/karaoke.py`: CP2 builder that converts tokens.json into line-grouped karaoke.json with join metadata and payload validation.

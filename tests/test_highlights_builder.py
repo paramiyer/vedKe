@@ -109,10 +109,11 @@ def test_build_highlights_payload_applies_page_scale() -> None:
             token_id="L0001_T0001",
             line_id="L0001",
             deva="गणेशाथर्वशीर्षम्",
+            kind="word",
             norm="गणेशाथर्वशीर्षम्",
             base_norm="गणेशाथर्वशीर्षम",
         ),
-        KaraokeToken(token_id="L0001_T0002", line_id="L0001", deva="।", norm="।", base_norm="।"),
+        KaraokeToken(token_id="L0001_T0002", line_id="L0001", deva="।", kind="punct", norm="।", base_norm="।"),
     ]
 
     aligned = [(tokens[0], words[0]), (tokens[1], words[1])]
@@ -121,8 +122,8 @@ def test_build_highlights_payload_applies_page_scale() -> None:
     assert payload == {
         "pages": {
             "1": [
-                {"id": "L0001_T0001", "x": 20.0, "y": 40.0, "w": 40.0, "h": 40.0, "label": "गणेशाथर्वशीर्षम्"},
-                {"id": "L0001_T0002", "x": 64.0, "y": 40.0, "w": 12.0, "h": 40.0, "label": "।"},
+                {"id": "L0001_T0001", "kind": "word", "x": 20.0, "y": 40.0, "w": 40.0, "h": 40.0, "label": "गणेशाथर्वशीर्षम्"},
+                {"id": "L0001_T0002", "kind": "punct", "x": 64.0, "y": 40.0, "w": 12.0, "h": 40.0, "label": "।"},
             ]
         }
     }

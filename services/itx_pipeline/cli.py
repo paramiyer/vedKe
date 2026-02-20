@@ -60,6 +60,36 @@ def _build_highlights(args: argparse.Namespace) -> int:
     return 0
 
 
+def _build_pipeline(args: argparse.Namespace) -> int:
+    build_dir = Path(args.out)
+    web_dir = Path(args.web)
+    itx_path = Path(args.itx)
+    pdf_path = Path(args.pdf)
+
+    tokens_out = write_tokens_json(slug=args.slug, itx_path=itx_path, out_dir=build_dir)
+    print(tokens_out)
+
+    karaoke_out = write_karaoke_json(tokens_path=build_dir / "tokens.json", out_dir=build_dir)
+    print(karaoke_out)
+
+    visual_out = build_visual_assets(slug=args.slug, itx_path=itx_path, out_dir=build_dir)
+    print(visual_out)
+
+    highlights_out = write_highlights_json(
+        slug=args.slug,
+        karaoke_path=build_dir / "karaoke.json",
+        pdf_path=pdf_path,
+        out_dir=build_dir,
+    )
+    print(highlights_out)
+
+    copied = sync_web_assets(slug=args.slug, build_dir=build_dir, web_dir=web_dir)
+    print(f"Copied {len(copied)} file(s):")
+    for item in copied:
+        print(item)
+    return 0
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(prog="python -m services.itx_pipeline")
     subparsers = parser.add_subparsers(dest="command", required=True)
@@ -104,6 +134,17 @@ def build_parser() -> argparse.ArgumentParser:
     build_highlights.add_argument("--pdf", required=True, help="Path to source PDF with extractable text layer")
     build_highlights.add_argument("--out", required=True, help="Build slug directory containing visual/visual.json")
     build_highlights.set_defaults(handler=_build_highlights)
+
+    build_pipeline = subparsers.add_parser(
+        "build-pipeline",
+        help="Run end-to-end reusable sukta pipeline: tokens -> karaoke -> visual -> highlights -> sync-web",
+    )
+    build_pipeline.add_argument("--slug", required=True, help="Sukta slug")
+    build_pipeline.add_argument("--itx", required=True, help="Path to source .itx file")
+    build_pipeline.add_argument("--pdf", required=True, help="Path to source PDF with extractable text layer")
+    build_pipeline.add_argument("--out", required=True, help="Build slug directory (e.g. build/<slug>)")
+    build_pipeline.add_argument("--web", required=True, help="Web destination dir (e.g. apps/web/public/suktas/<slug>)")
+    build_pipeline.set_defaults(handler=_build_pipeline)
 
     return parser
 

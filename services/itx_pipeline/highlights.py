@@ -31,6 +31,7 @@ class KaraokeToken:
     token_id: str
     line_id: str
     deva: str
+    kind: str
     norm: str
     base_norm: str
 
@@ -117,6 +118,83 @@ def _split_pdf_word(word: PdfWord) -> list[PdfWord]:
         )
         offset_chars += part_chars
 
+    return split_words
+
+
+def _split_word_from_base(word: PdfWord, parts: list[str]) -> list[PdfWord]:
+    if len(parts) <= 1:
+        return [word]
+    total = sum(max(1, len(part)) for part in parts)
+    out: list[PdfWord] = []
+    offset = 0.0
+    for part in parts:
+        weight = max(1, len(part))
+        width = word.w * (weight / total)
+        out.append(
+            PdfWord(
+                page=word.page,
+                text=part,
+                x=word.x + offset,
+                y=word.y,
+                w=width,
+                h=word.h,
+                norm=part,
+                base_norm=part,
+            )
+        )
+        offset += width
+    return out
+
+
+def _decompose_base_word(base_text: str, token_vocab: set[str], max_parts: int = 5) -> list[str] | None:
+    if not base_text or base_text in token_vocab:
+        return None
+
+    memo: dict[tuple[int, int], list[str] | None] = {}
+    n = len(base_text)
+
+    def dfs(pos: int, parts_used: int) -> list[str] | None:
+        if pos == n:
+            return []
+        if parts_used >= max_parts:
+            return None
+        key = (pos, parts_used)
+        if key in memo:
+            return memo[key]
+
+        best: list[str] | None = None
+        for end in range(n, pos, -1):
+            piece = base_text[pos:end]
+            if piece not in token_vocab:
+                continue
+            tail = dfs(end, parts_used + 1)
+            if tail is None:
+                continue
+            candidate = [piece, *tail]
+            if best is None or len(candidate) < len(best):
+                best = candidate
+
+        memo[key] = best
+        return best
+
+    parts = dfs(0, 0)
+    if parts is None or len(parts) <= 1:
+        return None
+    return parts
+
+
+def split_words_with_token_vocab(words: list[PdfWord], tokens: list[KaraokeToken]) -> list[PdfWord]:
+    token_vocab = {token.base_norm for token in tokens if token.base_norm}
+    if not token_vocab:
+        return words
+
+    split_words: list[PdfWord] = []
+    for word in words:
+        parts = _decompose_base_word(word.base_norm, token_vocab)
+        if not parts:
+            split_words.append(word)
+            continue
+        split_words.extend(_split_word_from_base(word, parts))
     return split_words
 
 
@@ -208,6 +286,7 @@ def load_karaoke_tokens(karaoke_path: Path) -> tuple[str, list[KaraokeToken]]:
                     token_id=token_id,
                     line_id=line_id,
                     deva=deva,
+                    kind=str(token.get("kind", "word")),
                     norm=_normalize_for_match(deva),
                     base_norm=_normalize_base(deva),
                 )
@@ -335,6 +414,7 @@ def build_highlights_payload(
         pages.setdefault(page_key, []).append(
             {
                 "id": token.token_id,
+                "kind": token.kind,
                 "x": round(word.x * scale_x, 3),
                 "y": round(word.y * scale_y, 3),
                 "w": round(word.w * scale_x, 3),
@@ -357,12 +437,23 @@ def write_highlights_json(slug: str, karaoke_path: Path, pdf_path: Path, out_dir
 
     xml_text = load_pdftotext_bbox_xml(pdf_path)
     pdf_pages, words = parse_pdftotext_bbox_xml(xml_text)
+    words = split_words_with_token_vocab(words=words, tokens=tokens)
     aligned, missing = align_tokens_to_words(tokens=tokens, words=words)
     coverage = len(aligned) / max(1, len(tokens))
-    if coverage < 0.9:
+    if missing:
         lines = "\n".join(f"- {item.token_id} ({item.line_id}): {item.deva}" for item in missing[:10])
+        report_path = out_dir / "visual" / "highlights.unmatched.json"
+        report_path.parent.mkdir(parents=True, exist_ok=True)
+        report = {
+            "slug": slug,
+            "matched": len(aligned),
+            "totalTokens": len(tokens),
+            "coverage": round(coverage, 4),
+            "unmatched": [{"id": token.token_id, "lineId": token.line_id, "deva": token.deva, "kind": token.kind} for token in missing],
+        }
+        report_path.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
         raise RuntimeError(
-            f"Low alignment coverage: matched {len(aligned)}/{len(tokens)} tokens ({coverage:.1%}).\n"
+            f"Could not fully align tokens: matched {len(aligned)}/{len(tokens)} tokens ({coverage:.1%}).\n"
             f"First unmatched tokens:\n{lines}"
         )
 
@@ -373,16 +464,5 @@ def write_highlights_json(slug: str, karaoke_path: Path, pdf_path: Path, out_dir
     highlights_path = out_dir / "visual" / "highlights.json"
     highlights_path.parent.mkdir(parents=True, exist_ok=True)
     highlights_path.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-
-    if missing:
-        report_path = out_dir / "visual" / "highlights.unmatched.json"
-        report = {
-            "slug": slug,
-            "matched": len(aligned),
-            "totalTokens": len(tokens),
-            "coverage": round(coverage, 4),
-            "unmatched": [{"id": token.token_id, "lineId": token.line_id, "deva": token.deva} for token in missing],
-        }
-        report_path.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
     return highlights_path
