@@ -1,6 +1,77 @@
 # vedKe
 
+## Python Test Setup
+Create and activate a virtual environment, install runtime + dev dependencies, then run tests:
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+pip install -r requirements-dev.txt
+python -m pytest
+```
+
 ## Image Karaoke Setup
+
+### Visual-first build (.itx -> PDF -> SVG pages)
+From repo root:
+
+```bash
+python -m services.itx_pipeline build-visual \
+  --slug ganapati \
+  --itx data/suktas/ganapatiaccent.itx \
+  --out build/ganapati
+```
+
+This writes:
+
+```text
+build/ganapati/visual/visual.json
+build/ganapati/visual/highlights.json
+build/ganapati/visual/pages/page-001.svg
+...
+```
+
+To serve from React, sync build assets into Vite public:
+
+```bash
+python -m services.itx_pipeline sync-web \
+  --slug ganapati \
+  --build build/ganapati \
+  --web apps/web/public/suktas/ganapati
+```
+
+### CP pipeline to web (tokens -> karaoke -> sync)
+From repo root:
+
+```bash
+python3 -m services.itx_pipeline build-tokens \
+  --slug ganapati \
+  --itx data/suktas/ganapatiaccent.itx \
+  --out build/ganapati
+
+python3 -m services.itx_pipeline build-karaoke \
+  --tokens build/ganapati/tokens.json \
+  --out build/ganapati
+
+python3 -m services.itx_pipeline build-highlights \
+  --slug ganapati \
+  --karaoke build/ganapati/karaoke.json \
+  --pdf data/suktas/ganapatiaccent.pdf \
+  --out build/ganapati
+
+python3 -m services.itx_pipeline sync-web \
+  --slug ganapati \
+  --build build/ganapati \
+  --web apps/web/public/suktas/ganapati
+
+cd apps/web
+npm install
+npm run dev
+```
+
+`apps/web/public/suktas/manifest.json` controls the slug list shown on `/`.
+If the manifest is missing/unreadable, the app falls back to `["sample"]`.
 
 ### Frontend setup (React + Vite)
 From repo root:
@@ -8,21 +79,17 @@ From repo root:
 ```bash
 cd apps/web
 npm install
+npm run dev
 ```
 
 This installs the MVP dependencies including:
 - `file-saver` + `@types/file-saver` for JSON download
 - `use-resize-observer` for overlay alignment on resize
 
-Run locally:
-
-```bash
-npm run dev
-```
-
 ### Routes
 - `/` list of available slugs
-- `/suktas/:slug` image-first karaoke playback
+- `/suktas/:slug` HTML Devanagari/Vedic karaoke renderer driven by `karaoke.json`
+- `/slugs/:slug/visual` PDF-faithful SVG visual preview + highlight overlay/annotation
 - `/annotate` dev-only annotation tool
 
 `/annotate` is available only when either condition is true:
@@ -89,3 +156,39 @@ On macOS install poppler:
 ```bash
 brew install poppler
 ```
+
+### Tooling prerequisites for visual build
+- ITRANS + LaTeX toolchain (`itrans`, `pdflatex`) to produce PDF from `.itx`
+- Poppler tools (`pdftocairo`, `pdfinfo`, `pdftotext`) for PDF -> SVG pages and word bbox extraction
+
+Install notes (macOS):
+
+```bash
+brew install poppler
+```
+
+LaTeX/ITRANS installation varies by setup; ensure `itrans` and `pdflatex` are on `PATH`.
+
+### Known limitations
+- `build-visual` shells out to system tools and fails fast with explicit messages when missing.
+- Highlight save is local-first (localStorage) with manual JSON export; there is no backend persistence yet.
+
+## Sanskrit Font Rendering (apps/web)
+- Fonts are bundled in `apps/web/public/fonts/`:
+  - `NotoSerifDevanagari-Devanagari.woff2`
+  - `NotoSansDevanagari-Devanagari.woff2`
+- The Sanskrit renderer applies these via `.vedicText` in `apps/web/src/styles.css`.
+- `/suktas/:slug` renders `apps/web/public/suktas/<slug>/karaoke.json` as selectable HTML text.
+
+### Verify rendering
+1. Run `cd apps/web && npm run dev`.
+2. Open `/suktas/<slug>`.
+3. In the page:
+   - enable `Show codepoints` and verify marks exist in token strings.
+   - enable `Show font used` and confirm Devanagari font stack is active.
+   - inspect `Font support self-test` status for known marks.
+
+### If Vedic marks are missing/misaligned
+1. Hard-refresh the browser and retry.
+2. Confirm both WOFF2 files are present under `apps/web/public/fonts/`.
+3. Check `Show font used`; if fallback fonts are used, glyph coverage may be incomplete.
