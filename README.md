@@ -1,99 +1,136 @@
 # vedKe
 
-## Python Test Setup
-Create and activate a virtual environment, install runtime + dev dependencies, then run tests:
+End-to-end pipeline for Vedic `.itx` text to React-rendered visual karaoke assets.
 
+This README is written as an operator guide so you can onboard future suktas by uploading:
+- one `.itx` file (source text)
+- one `.pdf` file (matching visual/text layer)
+
+and render in the web app with token-level highlighting.
+
+## What Gets Built
+
+For a slug `<slug>`, pipeline outputs:
+
+```text
+build/<slug>/tokens.json
+build/<slug>/karaoke.json
+build/<slug>/visual/visual.json
+build/<slug>/visual/highlights.json
+build/<slug>/visual/pages/page-001.svg
+...
+```
+
+Then `sync-web` copies them to:
+
+```text
+apps/web/public/suktas/<slug>/
+  tokens.json
+  karaoke.json
+  visual/visual.json
+  visual/highlights.json
+  visual/pages/page-*.svg
+```
+
+## Data Flow (Source of Truth)
+
+1. `.itx` -> `tokens.json`
+2. `tokens.json` -> `karaoke.json` (line grouping + `joinToNext`)
+3. `.itx` / `.pdf` -> `visual/visual.json` + SVG pages
+4. `karaoke.json` + PDF text-layer bboxes -> `visual/highlights.json`
+5. `build/*` -> `apps/web/public/suktas/<slug>/*`
+
+Important:
+- `karaoke.json` is the source-of-truth token stream.
+- `highlights.json` is aligned to `karaoke.json` token IDs and includes `kind` (`word`/`punct`).
+
+## Prerequisites
+
+### Python
 ```bash
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
 pip install -r requirements-dev.txt
-python -m pytest
 ```
 
-## Image Karaoke Setup
+### System tools
+- `itrans`
+- `pdflatex`
+- `pdftocairo`
+- `pdfinfo`
+- `pdftotext`
 
-### Visual-first build (.itx -> PDF -> SVG pages)
-From repo root:
-
+macOS (Poppler tools):
 ```bash
-python -m services.itx_pipeline build-visual \
-  --slug ganapati \
-  --itx data/suktas/ganapatiaccent.itx \
-  --out build/ganapati
+brew install poppler
 ```
 
-This writes:
+## One-Command Reusable Pipeline (Recommended)
 
-```text
-build/ganapati/visual/visual.json
-build/ganapati/visual/highlights.json
-build/ganapati/visual/pages/page-001.svg
-...
-```
-
-To serve from React, sync build assets into Vite public:
-
-```bash
-python -m services.itx_pipeline sync-web \
-  --slug ganapati \
-  --build build/ganapati \
-  --web apps/web/public/suktas/ganapati
-```
-
-### CP pipeline to web (tokens -> karaoke -> sync)
-From repo root:
-
-```bash
-python3 -m services.itx_pipeline build-tokens \
-  --slug ganapati \
-  --itx data/suktas/ganapatiaccent.itx \
-  --out build/ganapati
-
-python3 -m services.itx_pipeline build-karaoke \
-  --tokens build/ganapati/tokens.json \
-  --out build/ganapati
-
-python3 -m services.itx_pipeline build-highlights \
-  --slug ganapati \
-  --karaoke build/ganapati/karaoke.json \
-  --pdf data/suktas/ganapatiaccent.pdf \
-  --out build/ganapati
-
-python3 -m services.itx_pipeline sync-web \
-  --slug ganapati \
-  --build build/ganapati \
-  --web apps/web/public/suktas/ganapati
-
-cd apps/web
-npm install
-npm run dev
-```
-
-### Reusable one-command pipeline for any sukta
-From repo root:
+For any future sukta:
 
 ```bash
 python3 -m services.itx_pipeline build-pipeline \
   --slug <slug> \
-  --itx data/suktas/<file>.itx \
-  --pdf data/suktas/<file>.pdf \
+  --itx data/suktas/<name>.itx \
+  --pdf data/suktas/<name>.pdf \
   --out build/<slug> \
   --web apps/web/public/suktas/<slug>
 ```
 
-This runs:
+This runs, in order:
 1. `build-tokens`
 2. `build-karaoke`
 3. `build-visual`
-4. `build-highlights` (strict token parity against `karaoke.json`)
+4. `build-highlights`
 5. `sync-web`
 
-`apps/web/public/suktas/manifest.json` controls the slug list shown on `/`.
-If the manifest is missing/unreadable, the app falls back to `["sample"]`.
+## Step-by-Step Pipeline (If You Want Manual Control)
 
-### Frontend setup (React + Vite)
-From repo root:
+```bash
+python3 -m services.itx_pipeline build-tokens \
+  --slug <slug> \
+  --itx data/suktas/<name>.itx \
+  --out build/<slug>
+
+python3 -m services.itx_pipeline build-karaoke \
+  --tokens build/<slug>/tokens.json \
+  --out build/<slug>
+
+python3 -m services.itx_pipeline build-visual \
+  --slug <slug> \
+  --itx data/suktas/<name>.itx \
+  --out build/<slug>
+
+python3 -m services.itx_pipeline build-highlights \
+  --slug <slug> \
+  --karaoke build/<slug>/karaoke.json \
+  --pdf data/suktas/<name>.pdf \
+  --out build/<slug>
+
+python3 -m services.itx_pipeline sync-web \
+  --slug <slug> \
+  --build build/<slug> \
+  --web apps/web/public/suktas/<slug>
+```
+
+## Add a New Sukta (Checklist)
+
+1. Place files:
+   - `data/suktas/<name>.itx`
+   - `data/suktas/<name>.pdf`
+2. Choose slug:
+   - e.g. `mrityunjaya`
+3. Run one-command pipeline:
+   - `build-pipeline` command above
+4. Add slug to web manifest:
+   - `apps/web/public/suktas/manifest.json`
+5. Start frontend and verify routes:
+   - `/suktas/<slug>`
+   - `/slugs/<slug>/visual`
+
+## Frontend Run
 
 ```bash
 cd apps/web
@@ -101,113 +138,98 @@ npm install
 npm run dev
 ```
 
-This installs the MVP dependencies including:
-- `file-saver` + `@types/file-saver` for JSON download
-- `use-resize-observer` for overlay alignment on resize
+Routes:
+- `/` slug list
+- `/suktas/:slug` text preview from `karaoke.json`
+- `/slugs/:slug/visual` SVG visual rendering + token highlight playback
 
-### Routes
-- `/` list of available slugs
-- `/suktas/:slug` HTML Devanagari/Vedic karaoke renderer driven by `karaoke.json`
-- `/slugs/:slug/visual` PDF-faithful SVG visual preview + highlight overlay/annotation
-- `/annotate` dev-only annotation tool
+## Validation and Accuracy Checks
 
-`/annotate` is available only when either condition is true:
-- environment variable `VITE_DEV_TOOLS=true`
-- local storage key is set: `localStorage.setItem("veda.devtools", "1")`
+Use these quick checks after build:
 
-### Image-first asset contract
-Each sukta lives under:
-
-```text
-assets/suktas/<slug>/
-  image.png
-  audio.mp3
-  annotations.json
+### 1) Token parity (`karaoke.json` vs `highlights.json`)
+```bash
+python3 - <<'PY'
+import json
+from pathlib import Path
+slug = "ganapati"
+k = json.loads(Path(f"build/{slug}/karaoke.json").read_text(encoding="utf-8"))
+h = json.loads(Path(f"build/{slug}/visual/highlights.json").read_text(encoding="utf-8"))
+k_ids = [t["id"] for line in k["lines"] for t in line["tokens"]]
+h_ids = [r["id"] for p in sorted(h["pages"], key=lambda x:int(x)) for r in h["pages"][p]]
+print("karaoke:", len(k_ids), "highlights:", len(h_ids))
+print("missing:", len(set(k_ids)-set(h_ids)), "extra:", len(set(h_ids)-set(k_ids)))
+print("positional_similarity_%:", 100.0 * sum(1 for i in range(min(len(k_ids),len(h_ids))) if k_ids[i]==h_ids[i]) / max(1,min(len(k_ids),len(h_ids))))
+PY
 ```
 
-`annotations.json`:
+Expected:
+- counts equal
+- missing/extra == 0
+- positional similarity near 100%
 
-```json
-{
-  "slug": "sample",
-  "image": "image.png",
-  "audio": "audio.mp3",
-  "w": 1280,
-  "h": 720,
-  "items": [
-    { "id": "w001", "bbox": [120, 180, 320, 250], "t0": 0.0, "t1": 0.8 }
-  ]
-}
+### 2) Kind parity (`word`/`punct`)
+```bash
+python3 - <<'PY'
+import json
+from pathlib import Path
+slug = "ganapati"
+k = json.loads(Path(f"build/{slug}/karaoke.json").read_text(encoding="utf-8"))
+h = json.loads(Path(f"build/{slug}/visual/highlights.json").read_text(encoding="utf-8"))
+k_kind = {t["id"]: t["kind"] for line in k["lines"] for t in line["tokens"]}
+bad = []
+for page in h["pages"].values():
+  for r in page:
+    if k_kind.get(r["id"]) != r.get("kind"):
+      bad.append(r["id"])
+print("kind_mismatch:", len(bad))
+PY
 ```
 
-### Add a new sukta
-1. Create `assets/suktas/<slug>/`.
-2. Add one image file and one audio file.
-3. Copy or create `annotations.json` with matching `w/h` and `items`.
-4. Open `/suktas/<slug>` to verify playback and highlighting.
+Expected:
+- `kind_mismatch: 0`
 
-### Annotation workflow (`/annotate`)
-1. Pick a slug from the dropdown.
-2. Draw word boxes by click-dragging on the image.
-3. Reorder/delete/select items as needed.
-4. Play audio and press `Space`:
-   - first press sets `t0`
-   - second press sets `t1` and auto-advances
-5. Fine-tune timings with `±0.05` and `±0.10` controls.
-6. Export via `Download annotations.json` or `Copy JSON to clipboard`.
-7. Optionally re-import JSON to verify round-trip.
+## How Highlight Alignment Works (No OCR / No ML)
 
-### Optional PDF -> PNG preprocessing utility
-A helper script is included:
+Current `build-highlights` implementation:
+- extracts word bboxes from PDF text layer with `pdftotext -bbox-layout`
+- normalizes Devanagari text/marks/digits
+- splits compound punctuation-digit words (e.g. `॥14॥`)
+- applies token-vocabulary-guided split for merged PDF words
+- runs monotonic dynamic-programming sequence alignment to map to `karaoke.json` token IDs
+- writes `highlights.json` including `id`, `kind`, `x`, `y`, `w`, `h`, `label`
+
+## Troubleshooting
+
+### Error: missing tool (`pdftotext`, `pdftocairo`, `pdfinfo`)
+Install Poppler and re-run.
+
+### Error: `Could not fully align tokens`
+Pipeline now fails if any token is unmatched.
+Check:
+- PDF corresponds exactly to the same text as `.itx`
+- PDF has extractable text layer (not scanned image-only)
+- font/text normalization differences in source
+
+### Visual route shows no new updates
+- Hard refresh browser.
+- Ensure you ran `sync-web`.
+- Check `apps/web/public/suktas/<slug>/visual/highlights.json` timestamp/content.
+
+### `manifest.json` does not list new slug
+Add slug to:
+- `apps/web/public/suktas/manifest.json`
+
+## Python Tests
+
+If dependencies are installed:
 
 ```bash
-python tools/pdf_to_png.py <input.pdf> <output_dir> --dpi 300
+python3 -m pytest
 ```
 
-Install optional dependency:
+## Notes
 
-```bash
-pip install pdf2image
-```
-
-On macOS install poppler:
-
-```bash
-brew install poppler
-```
-
-### Tooling prerequisites for visual build
-- ITRANS + LaTeX toolchain (`itrans`, `pdflatex`) to produce PDF from `.itx`
-- Poppler tools (`pdftocairo`, `pdfinfo`, `pdftotext`) for PDF -> SVG pages and word bbox extraction
-
-Install notes (macOS):
-
-```bash
-brew install poppler
-```
-
-LaTeX/ITRANS installation varies by setup; ensure `itrans` and `pdflatex` are on `PATH`.
-
-### Known limitations
-- `build-visual` shells out to system tools and fails fast with explicit messages when missing.
-- Highlight save is local-first (localStorage) with manual JSON export; there is no backend persistence yet.
-
-## Sanskrit Font Rendering (apps/web)
-- Fonts are bundled in `apps/web/public/fonts/`:
-  - `NotoSerifDevanagari-Devanagari.woff2`
-  - `NotoSansDevanagari-Devanagari.woff2`
-- The Sanskrit renderer applies these via `.vedicText` in `apps/web/src/styles.css`.
-- `/suktas/:slug` renders `apps/web/public/suktas/<slug>/karaoke.json` as selectable HTML text.
-
-### Verify rendering
-1. Run `cd apps/web && npm run dev`.
-2. Open `/suktas/<slug>`.
-3. In the page:
-   - enable `Show codepoints` and verify marks exist in token strings.
-   - enable `Show font used` and confirm Devanagari font stack is active.
-   - inspect `Font support self-test` status for known marks.
-
-### If Vedic marks are missing/misaligned
-1. Hard-refresh the browser and retry.
-2. Confirm both WOFF2 files are present under `apps/web/public/fonts/`.
-3. Check `Show font used`; if fallback fonts are used, glyph coverage may be incomplete.
+- `/annotate` is dev-only tooling and optional.
+- Audio alignment is intentionally separate from this build pipeline.
+- This pipeline focuses on text/visual tokenization and rendering first.
