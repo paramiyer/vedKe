@@ -32,6 +32,7 @@ type KaraokeFile = {
 
 type HighlightRect = {
   id: string;
+  kind: "word" | "punct";
   x: number;
   y: number;
   w: number;
@@ -44,6 +45,15 @@ type HighlightsFile = {
 };
 
 type Point = { x: number; y: number };
+type CapturedClick = {
+  clientX: number;
+  clientY: number;
+  svgX: number;
+  svgY: number;
+};
+
+const PIN_OFFSET_MIN_PX = 72;
+const PIN_OFFSET_RATIO = 0.35;
 
 function toAbsoluteUrl(url: string): string {
   return new URL(url, window.location.origin).toString();
@@ -170,6 +180,7 @@ function validateHighlights(raw: unknown): HighlightsFile {
       const item = entry as Record<string, unknown>;
       if (
         typeof item.id !== "string" ||
+        (item.kind !== "word" && item.kind !== "punct") ||
         typeof item.x !== "number" ||
         typeof item.y !== "number" ||
         typeof item.w !== "number" ||
@@ -179,6 +190,7 @@ function validateHighlights(raw: unknown): HighlightsFile {
       }
       rects.push({
         id: item.id,
+        kind: item.kind,
         x: item.x,
         y: item.y,
         w: item.w,
@@ -247,7 +259,7 @@ function normRect(a: Point, b: Point): HighlightRect {
   const y = Math.min(a.y, b.y);
   const right = Math.max(a.x, b.x);
   const bottom = Math.max(a.y, b.y);
-  return { id: "", x, y, w: right - x, h: bottom - y };
+  return { id: "", kind: "word", x, y, w: right - x, h: bottom - y };
 }
 
 function getInitialPageIndex(pages: VisualPageEntry[]): number {
@@ -276,11 +288,18 @@ export function VisualPage({ slug }: { slug: string }): JSX.Element {
   const [debugVisible, setDebugVisible] = useState(false);
   const [annotateMode, setAnnotateMode] = useState(false);
   const [mouseSvg, setMouseSvg] = useState<Point | null>(null);
+  const [capturedClick, setCapturedClick] = useState<CapturedClick | null>(null);
+  const [scrollPausedByUser, setScrollPausedByUser] = useState(false);
   const [dragStart, setDragStart] = useState<Point | null>(null);
   const [dragCurrent, setDragCurrent] = useState<Point | null>(null);
 
   const stageRef = useRef<HTMLDivElement | null>(null);
   const imageCanvasRef = useRef<HTMLCanvasElement | null>(null);
+  const visualScrollRef = useRef<HTMLDivElement | null>(null);
+  const scrollPauseTimerRef = useRef<number | null>(null);
+  const programmaticScrollRef = useRef(false);
+  const prevActiveTokenIndexRef = useRef(0);
+  const prefersReducedMotionRef = useRef(false);
   const { ref: containerRef, width: containerWidth = 0 } = useResizeObserver<HTMLDivElement>();
 
   const storageKey = `veda.visual.highlights.${slug}`;
@@ -293,6 +312,8 @@ export function VisualPage({ slug }: { slug: string }): JSX.Element {
     setError(null);
     setPageIndex(0);
     setActiveTokenIndex(0);
+    setCapturedClick(null);
+    setScrollPausedByUser(false);
     setPlaying(false);
     setZoom(1);
 
@@ -397,6 +418,14 @@ export function VisualPage({ slug }: { slug: string }): JSX.Element {
   const pageHighlights = useMemo(() => (page ? highlights.pages[String(page.page)] ?? [] : []), [highlights.pages, page]);
   const allTokens = useMemo(() => karaoke?.lines.flatMap((line) => line.tokens) ?? [], [karaoke]);
   const activeToken = allTokens[activeTokenIndex] ?? null;
+  const tokenToLineIndex = useMemo(() => {
+    const mapping = new Map<string, number>();
+    (karaoke?.lines ?? []).forEach((line, lineIndex) => {
+      line.tokens.forEach((token) => mapping.set(token.id, lineIndex));
+    });
+    return mapping;
+  }, [karaoke]);
+  const activeLineIndex = activeToken ? tokenToLineIndex.get(activeToken.id) ?? 0 : 0;
   const tokenIndexById = useMemo(() => {
     const indexById = new Map<string, number>();
     allTokens.forEach((token, idx) => {
@@ -502,13 +531,44 @@ export function VisualPage({ slug }: { slug: string }): JSX.Element {
   };
 
   const draftRect = dragStart && dragCurrent ? normRect(dragStart, dragCurrent) : null;
+  const activeLineRect = useMemo(() => {
+    const rects = pageHighlights.filter(
+      (rect) => rect.kind === "word" && tokenToLineIndex.get(rect.id) === activeLineIndex
+    );
+    if (rects.length === 0) {
+      return null;
+    }
+    const minY = Math.min(...rects.map((rect) => rect.y));
+    const maxBottom = Math.max(...rects.map((rect) => rect.y + rect.h));
+    return { y: minY, h: maxBottom - minY };
+  }, [activeLineIndex, pageHighlights, tokenToLineIndex]);
+
+  useEffect(() => {
+    const media = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const apply = () => {
+      prefersReducedMotionRef.current = media.matches;
+    };
+    apply();
+    media.addEventListener("change", apply);
+    return () => {
+      media.removeEventListener("change", apply);
+    };
+  }, []);
+
+  useEffect(() => {
+    return () => {
+      if (scrollPauseTimerRef.current !== null) {
+        window.clearTimeout(scrollPauseTimerRef.current);
+      }
+    };
+  }, []);
 
   useEffect(() => {
     const canvas = imageCanvasRef.current;
     if (!canvas || !page || !pageSvgUrl || stageWidth <= 0 || stageHeight <= 0) {
       return;
     }
-    const ctx = canvas.getContext("2d");
+    const ctx = canvas.getContext("2d", { willReadFrequently: true });
     if (!ctx) {
       return;
     }
@@ -535,6 +595,9 @@ export function VisualPage({ slug }: { slug: string }): JSX.Element {
       pageHighlights.forEach((rect) => {
         const tokenIdx = tokenIndexById.get(rect.id);
         if (tokenIdx === undefined || tokenIdx > activeTokenIndex) {
+          return;
+        }
+        if (rect.kind === "punct") {
           return;
         }
         const padX = Math.max(2, rect.w * displayScale * 0.08);
@@ -612,6 +675,72 @@ export function VisualPage({ slug }: { slug: string }): JSX.Element {
     setDragCurrent(point);
   };
 
+  const onStageClick = (event: React.MouseEvent<HTMLDivElement>) => {
+    const point = pointerToSvg(event);
+    if (!point) {
+      return;
+    }
+    setCapturedClick({
+      clientX: event.clientX,
+      clientY: event.clientY,
+      svgX: point.x,
+      svgY: point.y
+    });
+  };
+
+  const markUserScrollInteraction = () => {
+    if (programmaticScrollRef.current) {
+      return;
+    }
+    setScrollPausedByUser(true);
+    if (scrollPauseTimerRef.current !== null) {
+      window.clearTimeout(scrollPauseTimerRef.current);
+    }
+    scrollPauseTimerRef.current = window.setTimeout(() => {
+      setScrollPausedByUser(false);
+      scrollPauseTimerRef.current = null;
+    }, 2500);
+  };
+
+  const recenterPinnedLine = () => {
+    const container = visualScrollRef.current;
+    if (!container || !page || !activeLineRect) {
+      return;
+    }
+    const pinOffsetPx = Math.max(PIN_OFFSET_MIN_PX, container.clientHeight * PIN_OFFSET_RATIO);
+    const maxScroll = Math.max(0, container.scrollHeight - container.clientHeight);
+    const target = clamp(activeLineRect.y * displayScale - pinOffsetPx, 0, maxScroll);
+    setScrollPausedByUser(false);
+    if (scrollPauseTimerRef.current !== null) {
+      window.clearTimeout(scrollPauseTimerRef.current);
+      scrollPauseTimerRef.current = null;
+    }
+    programmaticScrollRef.current = true;
+    container.scrollTo({ top: target, behavior: prefersReducedMotionRef.current ? "auto" : "smooth" });
+    window.setTimeout(() => {
+      programmaticScrollRef.current = false;
+    }, 140);
+  };
+
+  useEffect(() => {
+    const container = visualScrollRef.current;
+    if (!container || !page || !activeLineRect || scrollPausedByUser) {
+      prevActiveTokenIndexRef.current = activeLineIndex;
+      return;
+    }
+    const pinOffsetPx = Math.max(PIN_OFFSET_MIN_PX, container.clientHeight * PIN_OFFSET_RATIO);
+    const maxScroll = Math.max(0, container.scrollHeight - container.clientHeight);
+    const target = clamp(activeLineRect.y * displayScale - pinOffsetPx, 0, maxScroll);
+    const delta = Math.abs(activeLineIndex - prevActiveTokenIndexRef.current);
+    prevActiveTokenIndexRef.current = activeLineIndex;
+    const behavior: ScrollBehavior = prefersReducedMotionRef.current || delta > 1 ? "auto" : "smooth";
+    programmaticScrollRef.current = true;
+    container.scrollTo({ top: target, behavior });
+    window.setTimeout(() => {
+      programmaticScrollRef.current = false;
+    }, 140);
+  }, [activeLineIndex, activeLineRect, displayScale, page, scrollPausedByUser]);
+
   const onMouseUp = (event: React.MouseEvent<HTMLDivElement>) => {
     if (!page || !dragStart) {
       setDragStart(null);
@@ -631,6 +760,7 @@ export function VisualPage({ slug }: { slug: string }): JSX.Element {
     const highlightId = tokenId ?? nextHighlightId(highlights);
     const next: HighlightRect = {
       id: highlightId,
+      kind: activeToken?.kind ?? "word",
       x: rect.x,
       y: rect.y,
       w: rect.w,
@@ -764,6 +894,9 @@ export function VisualPage({ slug }: { slug: string }): JSX.Element {
         >
           {playing ? "Pause" : "Play"}
         </button>
+        <button type="button" onClick={recenterPinnedLine} disabled={!activeToken}>
+          Recenter line
+        </button>
         <label>
           Speed (tokens/s){" "}
           <input
@@ -805,6 +938,32 @@ export function VisualPage({ slug }: { slug: string }): JSX.Element {
         )}
       </section>
 
+      <section style={{ border: "1px solid #ddd", borderRadius: 6, padding: 10, display: "grid", gap: 6 }}>
+        <strong>Click Coordinates</strong>
+        {capturedClick ? (
+          <>
+            <div style={{ fontFamily: "monospace", fontSize: 12 }}>
+              client: {capturedClick.clientX.toFixed(1)}, {capturedClick.clientY.toFixed(1)}
+            </div>
+            <div style={{ fontFamily: "monospace", fontSize: 12 }}>
+              svg: {capturedClick.svgX.toFixed(2)}, {capturedClick.svgY.toFixed(2)}
+            </div>
+            <button
+              type="button"
+              style={{ width: "fit-content" }}
+              onClick={() => {
+                const text = JSON.stringify(capturedClick);
+                navigator.clipboard?.writeText(text).catch(() => undefined);
+              }}
+            >
+              Copy coords JSON
+            </button>
+          </>
+        ) : (
+          <div style={{ fontSize: 12, color: "#555" }}>Click on the rendered page to capture coordinates.</div>
+        )}
+      </section>
+
       {debugVisible ? (
         <section
           style={{
@@ -832,7 +991,15 @@ export function VisualPage({ slug }: { slug: string }): JSX.Element {
         </section>
       ) : null}
 
-      <div ref={containerRef} style={{ width: "100%", overflow: "auto", border: "1px solid #ddd", padding: 8 }}>
+      <div
+        ref={(el) => {
+          containerRef(el);
+          visualScrollRef.current = el;
+        }}
+        onWheel={markUserScrollInteraction}
+        onTouchStart={markUserScrollInteraction}
+        style={{ width: "100%", overflow: "auto", maxHeight: "72vh", border: "1px solid #ddd", padding: 8 }}
+      >
         <div
           ref={stageRef}
           style={{
@@ -845,6 +1012,7 @@ export function VisualPage({ slug }: { slug: string }): JSX.Element {
           onMouseDown={onMouseDown}
           onMouseMove={onMouseMove}
           onMouseUp={onMouseUp}
+          onClick={onStageClick}
           onMouseLeave={() => setMouseSvg(null)}
         >
           <canvas

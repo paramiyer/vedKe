@@ -70,6 +70,25 @@ npm install
 npm run dev
 ```
 
+### Reusable one-command pipeline for any sukta
+From repo root:
+
+```bash
+python3 -m services.itx_pipeline build-pipeline \
+  --slug <slug> \
+  --itx data/suktas/<file>.itx \
+  --pdf data/suktas/<file>.pdf \
+  --out build/<slug> \
+  --web apps/web/public/suktas/<slug>
+```
+
+This runs:
+1. `build-tokens`
+2. `build-karaoke`
+3. `build-visual`
+4. `build-highlights` (strict token parity against `karaoke.json`)
+5. `sync-web`
+
 `apps/web/public/suktas/manifest.json` controls the slug list shown on `/`.
 If the manifest is missing/unreadable, the app falls back to `["sample"]`.
 
