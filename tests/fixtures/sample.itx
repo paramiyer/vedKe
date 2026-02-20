@@ -1,0 +1,10 @@
+% header comment
+\documentstyle{article}
+\begin{document}
+\engtitle{ignore this}##
+gaNeshAtharvashIrSham
+OM bha\`dra.n karNe\'bhiH devAH .
+sa{\m+}hi\'tA sa\`ndhiH ..
+##
+This footer line must be ignored.
+\end{document}

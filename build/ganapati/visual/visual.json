@@ -1,0 +1,29 @@
+{
+  "slug": "ganapati",
+  "pages": [
+    {
+      "page": 1,
+      "svg": "pages/page-001.svg",
+      "width": 559.373,
+      "height": 793.707
+    },
+    {
+      "page": 2,
+      "svg": "pages/page-002.svg",
+      "width": 559.373,
+      "height": 793.707
+    },
+    {
+      "page": 3,
+      "svg": "pages/page-003.svg",
+      "width": 559.373,
+      "height": 793.707
+    },
+    {
+      "page": 4,
+      "svg": "pages/page-004.svg",
+      "width": 559.373,
+      "height": 793.707
+    }
+  ]
+}

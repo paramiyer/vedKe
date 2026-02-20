@@ -1,0 +1,39 @@
+@font-face {
+  font-family: "Vedic Noto Serif Devanagari";
+  src: url("/fonts/NotoSerifDevanagari-Devanagari.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Vedic Noto Sans Devanagari";
+  src: url("/fonts/NotoSansDevanagari-Devanagari.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.vedicText {
+  font-family: "Vedic Noto Serif Devanagari", "Vedic Noto Sans Devanagari", "Noto Serif Devanagari", "Noto Sans Devanagari",
+    "Devanagari Sangam MN", "Nirmala UI", serif !important;
+  text-rendering: optimizeLegibility;
+  font-kerning: normal;
+}
+
+.vedicTokenWrap {
+  white-space: pre-wrap;
+}
+
+.tokenCodepoints {
+  display: block;
+  color: #5f6368;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 11px;
+  line-height: 1.3;
+}

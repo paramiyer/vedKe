@@ -1,0 +1,80 @@
+{
+  "slug": "ganapati",
+  "matched": 537,
+  "totalTokens": 549,
+  "coverage": 0.9781,
+  "unmatched": [
+    {
+      "id": "L0037_T0007",
+      "lineId": "L0037",
+      "deva": "प्रमु॒च्यते",
+      "kind": "word"
+    },
+    {
+      "id": "L0041_T0007",
+      "lineId": "L0041",
+      "deva": "भ॒वति",
+      "kind": "word"
+    },
+    {
+      "id": "L0044_T0002",
+      "lineId": "L0044",
+      "deva": "ज॒पति",
+      "kind": "word"
+    },
+    {
+      "id": "L0044_T0005",
+      "lineId": "L0044",
+      "deva": "भ॒वति",
+      "kind": "word"
+    },
+    {
+      "id": "L0047_T0005",
+      "lineId": "L0047",
+      "deva": "भ॒वति",
+      "kind": "word"
+    },
+    {
+      "id": "L0047_T0009",
+      "lineId": "L0047",
+      "deva": "भ॒वति",
+      "kind": "word"
+    },
+    {
+      "id": "L0050_T0002",
+      "lineId": "L0050",
+      "deva": "ब्राह्मणान",
+      "kind": "word"
+    },
+    {
+      "id": "L0050_T0003",
+      "lineId": "L0050",
+      "deva": "सम्यग",
+      "kind": "word"
+    },
+    {
+      "id": "L0052_T0001",
+      "lineId": "L0052",
+      "deva": "महाविघ्ना᳚त",
+      "kind": "word"
+    },
+    {
+      "id": "L0052_T0004",
+      "lineId": "L0052",
+      "deva": "महादोषा᳚त",
+      "kind": "word"
+    },
+    {
+      "id": "L0052_T0007",
+      "lineId": "L0052",
+      "deva": "महापापा᳚त",
+      "kind": "word"
+    },
+    {
+      "id": "L0053_T0002",
+      "lineId": "L0053",
+      "deva": "प्रमु॒च्यते",
+      "kind": "word"
+    }
+  ]
+}

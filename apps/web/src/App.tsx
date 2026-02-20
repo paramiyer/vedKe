@@ -1,11 +1,17 @@
-import { Link, Navigate, Route, Routes } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, Navigate, Route, Routes, useParams } from "react-router-dom";
 import { isDevToolsEnabled } from "./lib/devtoolsGate";
+import { fallbackSlugs, hasVisualAssets, loadSuktaSlugs } from "./lib/suktaManifest";
 import { AnnotatePage } from "./routes/AnnotatePage";
 import { SuktaKaraokePage } from "./routes/SuktaKaraokePage";
+import { VisualPage } from "./routes/VisualPage";
 
-const SAMPLES = ["sample"];
+type HomeProps = {
+  slugs: string[];
+  visualAvailable: Record<string, boolean>;
+};
 
-function Home(): JSX.Element {
+function Home({ slugs, visualAvailable }: HomeProps): JSX.Element {
   const showAnnotate = isDevToolsEnabled();
 
   return (
@@ -15,9 +21,17 @@ function Home(): JSX.Element {
 
       <h2>Available Suktas</h2>
       <ul>
-        {SAMPLES.map((slug) => (
+        {slugs.map((slug) => (
           <li key={slug}>
-            <Link to={`/suktas/${slug}`}>{slug}</Link>
+            <Link to={`/suktas/${slug}`}>{slug} (karaoke)</Link>
+            {visualAvailable[slug] ? (
+              <>
+                {" | "}
+                <Link to={`/slugs/${slug}/visual`}>{slug} (visual)</Link>
+              </>
+            ) : (
+              " | visual unavailable"
+            )}
           </li>
         ))}
       </ul>
@@ -33,23 +47,50 @@ function Home(): JSX.Element {
   );
 }
 
-function AnnotateRoute(): JSX.Element {
+type AnnotateRouteProps = {
+  slugs: string[];
+};
+
+function AnnotateRoute({ slugs }: AnnotateRouteProps): JSX.Element {
   if (!isDevToolsEnabled()) {
     return <Navigate to="/" replace />;
   }
-  return <AnnotatePage slugs={SAMPLES} />;
+  return <AnnotatePage slugs={slugs} />;
 }
 
 function NotFound(): JSX.Element {
   return <main style={{ padding: 20 }}>Not found.</main>;
 }
 
+function VisualRoute(): JSX.Element {
+  const { slug = "sample" } = useParams();
+  return <VisualPage slug={slug} />;
+}
+
 export default function App(): JSX.Element {
+  const [slugs, setSlugs] = useState<string[]>(fallbackSlugs());
+  const [visualAvailable, setVisualAvailable] = useState<Record<string, boolean>>({});
+
+  useEffect(() => {
+    loadSuktaSlugs().then((loaded) => {
+      setSlugs(loaded);
+      Promise.all(
+        loaded.map(async (slug) => {
+          const available = await hasVisualAssets(slug);
+          return [slug, available] as const;
+        })
+      ).then((results) => {
+        setVisualAvailable(Object.fromEntries(results));
+      });
+    });
+  }, []);
+
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
+      <Route path="/" element={<Home slugs={slugs} visualAvailable={visualAvailable} />} />
       <Route path="/suktas/:slug" element={<SuktaKaraokePage />} />
-      <Route path="/annotate" element={<AnnotateRoute />} />
+      <Route path="/slugs/:slug/visual" element={<VisualRoute />} />
+      <Route path="/annotate" element={<AnnotateRoute slugs={slugs} />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   );

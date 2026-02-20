@@ -1,0 +1,3619 @@
+{
+  "slug": "ganapati",
+  "lines": [
+    {
+      "lineId": "L0001",
+      "tokens": [
+        {
+          "id": "L0001_T0001",
+          "deva": "गणेशाथर्वशीर्षम्",
+          "kind": "word",
+          "joinToNext": false
+        }
+      ]
+    },
+    {
+      "lineId": "L0002",
+      "tokens": [
+        {
+          "id": "L0002_T0001",
+          "deva": "ॐ",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0002_T0002",
+          "deva": "भ॒द्रं",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0002_T0003",
+          "deva": "कर्णे॑भिः",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0002_T0004",
+          "deva": "शृणु॒याम॑",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0002_T0005",
+          "deva": "देवाः",
+          "kind": "word",
+          "joinToNext": true
+        },
+        {
+          "id": "L0002_T0006",
+          "deva": "।",
+          "kind": "punct",
+          "joinToNext": false
+        },
+        {
+          "id": "L0002_T0007",
+          "deva": "भ॒द्रं",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0002_T0008",
+          "deva": "प॑श्येमा॒क्षभि॒र्यज॑त्राः",
+          "kind": "word",
+          "joinToNext": true
+        },
+        {
+          "id": "L0002_T0009",
+          "deva": "।",
+          "kind": "punct",
+          "joinToNext": false
+        }
+      ]
+    },
+    {
+      "lineId": "L0003",
+      "tokens": [
+        {
+          "id": "L0003_T0001",
+          "deva": "स्थि॒रैरङ्गै᳚स्तुष्टु॒वाँ",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0003_T0002",
+          "deva": "स॑स्त॒नूभि॑ः",
+          "kind": "word",
+          "joinToNext": true
+        },
+        {
+          "id": "L0003_T0003",
+          "deva": "।",
+          "kind": "punct",
+          "joinToNext": false
+        },
+        {
+          "id": "L0003_T0004",
+          "deva": "व्यशे॑म",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0003_T0005",
+          "deva": "दे॒वहि॑तं॒",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0003_T0006",
+          "deva": "यदायु॑ः",
+          "kind": "word",
+          "joinToNext": true
+        },
+        {
+          "id": "L0003_T0007",
+          "deva": "।",
+          "kind": "punct",
+          "joinToNext": false
+        }
+      ]
+    },
+    {
+      "lineId": "L0004",
+      "tokens": [
+        {
+          "id": "L0004_T0001",
+          "deva": "स्व॒स्ति",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0004_T0002",
+          "deva": "न॒",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0004_T0003",
+          "deva": "इन्द्रो॑",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0004_T0004",
+          "deva": "वृ॒द्धश्र॑वाः",
+          "kind": "word",
+          "joinToNext": true
+        },
+        {
+          "id": "L0004_T0005",
+          "deva": "।",
+          "kind": "punct",
+          "joinToNext": false
+        },
+        {
+          "id": "L0004_T0006",
+          "deva": "स्व॒स्ति",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0004_T0007",
+          "deva": "न॑ः",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0004_T0008",
+          "deva": "पू॒षा",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0004_T0009",
+          "deva": "वि॒श्ववे॑दाः",
+          "kind": "word",
+          "joinToNext": true
+        },
+        {
+          "id": "L0004_T0010",
+          "deva": "।",
+          "kind": "punct",
+          "joinToNext": false
+        }
+      ]
+    },
+    {
+      "lineId": "L0005",
+      "tokens": [
+        {
+          "id": "L0005_T0001",
+          "deva": "स्व॒स्ति",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0005_T0002",
+          "deva": "न॒स्तार्क्ष्यो॒",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0005_T0003",
+          "deva": "अरि॑ष्टनेमिः",
+          "kind": "word",
+          "joinToNext": true
+        },
+        {
+          "id": "L0005_T0004",
+          "deva": "।",
+          "kind": "punct",
+          "joinToNext": false
+        },
+        {
+          "id": "L0005_T0005",
+          "deva": "स्व॒स्ति",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0005_T0006",
+          "deva": "नो॒",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0005_T0007",
+          "deva": "बृह॒स्पति॑र्दधातु",
+          "kind": "word",
+          "joinToNext": true
+        },
+        {
+          "id": "L0005_T0008",
+          "deva": "॥",
+          "kind": "punct",
+          "joinToNext": false
+        }
+      ]
+    },
+    {
+      "lineId": "L0006",
+      "tokens": [
+        {
+          "id": "L0006_T0001",
+          "deva": "ॐ",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0006_T0002",
+          "deva": "शान्ति॒ः",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0006_T0003",
+          "deva": "शान्ति॒ः",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0006_T0004",
+          "deva": "शान्ति॑ः",
+          "kind": "word",
+          "joinToNext": true
+        },
+        {
+          "id": "L0006_T0005",
+          "deva": "॥",
+          "kind": "punct",
+          "joinToNext": false
+        }
+      ]
+    },
+    {
+      "lineId": "L0007",
+      "tokens": [
+        {
+          "id": "L0007_T0001",
+          "deva": "ॐ",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0007_T0002",
+          "deva": "नम॑स्ते",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0007_T0003",
+          "deva": "ग॒णप॑तये",
+          "kind": "word",
+          "joinToNext": true
+        },
+        {
+          "id": "L0007_T0004",
+          "deva": "।",
+          "kind": "punct",
+          "joinToNext": false
+        },
+        {
+          "id": "L0007_T0005",
+          "deva": "त्वमे॒व",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0007_T0006",
+          "deva": "प्र॒त्यक्षं॒",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0007_T0007",
+          "deva": "तत्त्व॑मसि",
+          "kind": "word",
+          "joinToNext": true
+        },
+        {
+          "id": "L0007_T0008",
+          "deva": "।",
+          "kind": "punct",
+          "joinToNext": false
+        }
+      ]
+    },
+    {
+      "lineId": "L0008",
+      "tokens": [
+        {
+          "id": "L0008_T0001",
+          "deva": "त्वमे॒व",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0008_T0002",
+          "deva": "के॒वलं॒",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0008_T0003",
+          "deva": "कर्ता॑ऽसि",
+          "kind": "word",
+          "joinToNext": true
+        },
+        {
+          "id": "L0008_T0004",
+          "deva": "।",
+          "kind": "punct",
+          "joinToNext": false
+        },
+        {
+          "id": "L0008_T0005",
+          "deva": "त्वमे॒व",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0008_T0006",
+          "deva": "के॒वलं॒",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0008_T0007",
+          "deva": "धर्ता॑ऽसि",
+          "kind": "word",
+          "joinToNext": true
+        },
+        {
+          "id": "L0008_T0008",
+          "deva": "।",
+          "kind": "punct",
+          "joinToNext": false
+        },
+        {
+          "id": "L0008_T0009",
+          "deva": "त्वमे॒व",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0008_T0010",
+          "deva": "के॒वलं॒",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0008_T0011",
+          "deva": "हर्ता॑ऽसि",
+          "kind": "word",
+          "joinToNext": true
+        },
+        {
+          "id": "L0008_T0012",
+          "deva": "।",
+          "kind": "punct",
+          "joinToNext": false
+        }
+      ]
+    },
+    {
+      "lineId": "L0009",
+      "tokens": [
+        {
+          "id": "L0009_T0001",
+          "deva": "त्वमेव",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0009_T0002",
+          "deva": "सर्वं",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0009_T0003",
+          "deva": "खल्विदं॑",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0009_T0004",
+          "deva": "ब्रह्मा॒सि",
+          "kind": "word",
+          "joinToNext": true
+        },
+        {
+          "id": "L0009_T0005",
+          "deva": "।",
+          "kind": "punct",
+          "joinToNext": false
+        },
+        {
+          "id": "L0009_T0006",
+          "deva": "त्वं",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0009_T0007",
+          "deva": "साक्षादात्मा॑ऽसि",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0009_T0008",
+          "deva": "नि॒त्यम",
+          "kind": "word",
+          "joinToNext": true
+        },
+        {
+          "id": "L0009_T0009",
+          "deva": "॥",
+          "kind": "punct",
+          "joinToNext": true
+        },
+        {
+          "id": "L0009_T0010",
+          "deva": "1",
+          "kind": "punct",
+          "joinToNext": true
+        },
+        {
+          "id": "L0009_T0011",
+          "deva": "॥",
+          "kind": "punct",
+          "joinToNext": false
+        }
+      ]
+    },
+    {
+      "lineId": "L0010",
+      "tokens": [
+        {
+          "id": "L0010_T0001",
+          "deva": "ऋ॑तं",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0010_T0002",
+          "deva": "व॒च्मि",
+          "kind": "word",
+          "joinToNext": true
+        },
+        {
+          "id": "L0010_T0003",
+          "deva": "।",
+          "kind": "punct",
+          "joinToNext": false
+        },
+        {
+          "id": "L0010_T0004",
+          "deva": "स॑त्यं",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0010_T0005",
+          "deva": "व॒च्मि",
+          "kind": "word",
+          "joinToNext": true
+        },
+        {
+          "id": "L0010_T0006",
+          "deva": "॥",
+          "kind": "punct",
+          "joinToNext": true
+        },
+        {
+          "id": "L0010_T0007",
+          "deva": "2",
+          "kind": "punct",
+          "joinToNext": true
+        },
+        {
+          "id": "L0010_T0008",
+          "deva": "॥",
+          "kind": "punct",
+          "joinToNext": false
+        }
+      ]
+    },
+    {
+      "lineId": "L0011",
+      "tokens": [
+        {
+          "id": "L0011_T0001",
+          "deva": "अ॒व",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0011_T0002",
+          "deva": "त्वं॒",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0011_T0003",
+          "deva": "माम",
+          "kind": "word",
+          "joinToNext": true
+        },
+        {
+          "id": "L0011_T0004",
+          "deva": "।",
+          "kind": "punct",
+          "joinToNext": false
+        },
+        {
+          "id": "L0011_T0005",
+          "deva": "अव॑",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0011_T0006",
+          "deva": "व॒क्तारम᳚",
+          "kind": "word",
+          "joinToNext": true
+        },
+        {
+          "id": "L0011_T0007",
+          "deva": "।",
+          "kind": "punct",
+          "joinToNext": false
+        },
+        {
+          "id": "L0011_T0008",
+          "deva": "अव॑",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0011_T0009",
+          "deva": "श्रो॒तारम᳚",
+          "kind": "word",
+          "joinToNext": true
+        },
+        {
+          "id": "L0011_T0010",
+          "deva": "।",
+          "kind": "punct",
+          "joinToNext": false
+        },
+        {
+          "id": "L0011_T0011",
+          "deva": "अव॑",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0011_T0012",
+          "deva": "दा॒तारम᳚",
+          "kind": "word",
+          "joinToNext": true
+        },
+        {
+          "id": "L0011_T0013",
+          "deva": "।",
+          "kind": "punct",
+          "joinToNext": false
+        },
+        {
+          "id": "L0011_T0014",
+          "deva": "अव॑",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0011_T0015",
+          "deva": "धा॒तारम᳚",
+          "kind": "word",
+          "joinToNext": true
+        },
+        {
+          "id": "L0011_T0016",
+          "deva": "।",
+          "kind": "punct",
+          "joinToNext": false
+        }
+      ]
+    },
+    {
+      "lineId": "L0012",
+      "tokens": [
+        {
+          "id": "L0012_T0001",
+          "deva": "अवानूचानम॑व",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0012_T0002",
+          "deva": "शि॒ष्यम",
+          "kind": "word",
+          "joinToNext": true
+        },
+        {
+          "id": "L0012_T0003",
+          "deva": "।",
+          "kind": "punct",
+          "joinToNext": false
+        },
+        {
+          "id": "L0012_T0004",
+          "deva": "अव॑",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0012_T0005",
+          "deva": "प॒श्चात्ता᳚त",
+          "kind": "word",
+          "joinToNext": true
+        },
+        {
+          "id": "L0012_T0006",
+          "deva": "।",
+          "kind": "punct",
+          "joinToNext": false
+        },
+        {
+          "id": "L0012_T0007",
+          "deva": "अव॑",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0012_T0008",
+          "deva": "पु॒रस्ता᳚त",
+          "kind": "word",
+          "joinToNext": true
+        },
+        {
+          "id": "L0012_T0009",
+          "deva": "।",
+          "kind": "punct",
+          "joinToNext": false
+        },
+        {
+          "id": "L0012_T0010",
+          "deva": "अवोत्त॒रात्ता᳚त",
+          "kind": "word",
+          "joinToNext": true
+        },
+        {
+          "id": "L0012_T0011",
+          "deva": "।",
+          "kind": "punct",
+          "joinToNext": false
+        }
+      ]
+    },
+    {
+      "lineId": "L0013",
+      "tokens": [
+        {
+          "id": "L0013_T0001",
+          "deva": "अव॑",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0013_T0002",
+          "deva": "दक्षि॒णात्ता᳚त",
+          "kind": "word",
+          "joinToNext": true
+        },
+        {
+          "id": "L0013_T0003",
+          "deva": "।",
+          "kind": "punct",
+          "joinToNext": false
+        },
+        {
+          "id": "L0013_T0004",
+          "deva": "अव॑",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0013_T0005",
+          "deva": "चो॒र्ध्वात्ता᳚त",
+          "kind": "word",
+          "joinToNext": true
+        },
+        {
+          "id": "L0013_T0006",
+          "deva": "।",
+          "kind": "punct",
+          "joinToNext": false
+        },
+        {
+          "id": "L0013_T0007",
+          "deva": "अवाध॒रात्ता᳚त",
+          "kind": "word",
+          "joinToNext": true
+        },
+        {
+          "id": "L0013_T0008",
+          "deva": "।",
+          "kind": "punct",
+          "joinToNext": false
+        }
+      ]
+    },
+    {
+      "lineId": "L0014",
+      "tokens": [
+        {
+          "id": "L0014_T0001",
+          "deva": "सर्वतो",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0014_T0002",
+          "deva": "मां",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0014_T0003",
+          "deva": "पाहि",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0014_T0004",
+          "deva": "पाहि॑",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0014_T0005",
+          "deva": "सम॒न्तात",
+          "kind": "word",
+          "joinToNext": true
+        },
+        {
+          "id": "L0014_T0006",
+          "deva": "॥",
+          "kind": "punct",
+          "joinToNext": true
+        },
+        {
+          "id": "L0014_T0007",
+          "deva": "3",
+          "kind": "punct",
+          "joinToNext": true
+        },
+        {
+          "id": "L0014_T0008",
+          "deva": "॥",
+          "kind": "punct",
+          "joinToNext": false
+        }
+      ]
+    },
+    {
+      "lineId": "L0015",
+      "tokens": [
+        {
+          "id": "L0015_T0001",
+          "deva": "त्वं",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0015_T0002",
+          "deva": "वाङ्मय॑स्त्वं",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0015_T0003",
+          "deva": "चिन्म॒यः",
+          "kind": "word",
+          "joinToNext": true
+        },
+        {
+          "id": "L0015_T0004",
+          "deva": "।",
+          "kind": "punct",
+          "joinToNext": false
+        },
+        {
+          "id": "L0015_T0005",
+          "deva": "त्वमानन्दमय॑स्त्वं",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0015_T0006",
+          "deva": "ब्रह्म॒मयः",
+          "kind": "word",
+          "joinToNext": true
+        },
+        {
+          "id": "L0015_T0007",
+          "deva": "।",
+          "kind": "punct",
+          "joinToNext": false
+        },
+        {
+          "id": "L0015_T0008",
+          "deva": "त्वं",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0015_T0009",
+          "deva": "सच्चिदानन्दाऽद्वि॑तीयो॒ऽसि",
+          "kind": "word",
+          "joinToNext": true
+        },
+        {
+          "id": "L0015_T0010",
+          "deva": "।",
+          "kind": "punct",
+          "joinToNext": false
+        }
+      ]
+    },
+    {
+      "lineId": "L0016",
+      "tokens": [
+        {
+          "id": "L0016_T0001",
+          "deva": "त्वं",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0016_T0002",
+          "deva": "प्र॒त्यक्षं॒",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0016_T0003",
+          "deva": "ब्रह्मा॑सि",
+          "kind": "word",
+          "joinToNext": true
+        },
+        {
+          "id": "L0016_T0004",
+          "deva": "।",
+          "kind": "punct",
+          "joinToNext": false
+        },
+        {
+          "id": "L0016_T0005",
+          "deva": "त्वं",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0016_T0006",
+          "deva": "ज्ञानमयो",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0016_T0007",
+          "deva": "विज्ञान॑मयो॒ऽसि",
+          "kind": "word",
+          "joinToNext": true
+        },
+        {
+          "id": "L0016_T0008",
+          "deva": "॥",
+          "kind": "punct",
+          "joinToNext": true
+        },
+        {
+          "id": "L0016_T0009",
+          "deva": "4",
+          "kind": "punct",
+          "joinToNext": true
+        },
+        {
+          "id": "L0016_T0010",
+          "deva": "॥",
+          "kind": "punct",
+          "joinToNext": false
+        }
+      ]
+    },
+    {
+      "lineId": "L0017",
+      "tokens": [
+        {
+          "id": "L0017_T0001",
+          "deva": "सर्वं",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0017_T0002",
+          "deva": "जगदिदं",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0017_T0003",
+          "deva": "त्व॑त्तो",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0017_T0004",
+          "deva": "जा॒यते",
+          "kind": "word",
+          "joinToNext": true
+        },
+        {
+          "id": "L0017_T0005",
+          "deva": "।",
+          "kind": "punct",
+          "joinToNext": false
+        },
+        {
+          "id": "L0017_T0006",
+          "deva": "सर्वं",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0017_T0007",
+          "deva": "जगदिदं",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0017_T0008",
+          "deva": "त्व॑त्तस्ति॒ष्ठति",
+          "kind": "word",
+          "joinToNext": true
+        },
+        {
+          "id": "L0017_T0009",
+          "deva": "।",
+          "kind": "punct",
+          "joinToNext": false
+        }
+      ]
+    },
+    {
+      "lineId": "L0018",
+      "tokens": [
+        {
+          "id": "L0018_T0001",
+          "deva": "सर्वं",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0018_T0002",
+          "deva": "जगदिदं",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0018_T0003",
+          "deva": "त्वयि",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0018_T0004",
+          "deva": "ल॑यमेष्य॒ति",
+          "kind": "word",
+          "joinToNext": true
+        },
+        {
+          "id": "L0018_T0005",
+          "deva": "।",
+          "kind": "punct",
+          "joinToNext": false
+        },
+        {
+          "id": "L0018_T0006",
+          "deva": "सर्वं",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0018_T0007",
+          "deva": "जगदिदं",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0018_T0008",
+          "deva": "त्वयि॑",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0018_T0009",
+          "deva": "प्रत्ये॒ति",
+          "kind": "word",
+          "joinToNext": true
+        },
+        {
+          "id": "L0018_T0010",
+          "deva": "।",
+          "kind": "punct",
+          "joinToNext": false
+        }
+      ]
+    },
+    {
+      "lineId": "L0019",
+      "tokens": [
+        {
+          "id": "L0019_T0001",
+          "deva": "त्वं",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0019_T0002",
+          "deva": "भूमिरापोऽनलोऽनि॑लो",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0019_T0003",
+          "deva": "न॒भः",
+          "kind": "word",
+          "joinToNext": true
+        },
+        {
+          "id": "L0019_T0004",
+          "deva": "।",
+          "kind": "punct",
+          "joinToNext": false
+        },
+        {
+          "id": "L0019_T0005",
+          "deva": "त्वं",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0019_T0006",
+          "deva": "चत्वारि",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0019_T0007",
+          "deva": "वा᳚क्पदा॒नि",
+          "kind": "word",
+          "joinToNext": true
+        },
+        {
+          "id": "L0019_T0008",
+          "deva": "॥",
+          "kind": "punct",
+          "joinToNext": true
+        },
+        {
+          "id": "L0019_T0009",
+          "deva": "5",
+          "kind": "punct",
+          "joinToNext": true
+        },
+        {
+          "id": "L0019_T0010",
+          "deva": "॥",
+          "kind": "punct",
+          "joinToNext": false
+        }
+      ]
+    },
+    {
+      "lineId": "L0020",
+      "tokens": [
+        {
+          "id": "L0020_T0001",
+          "deva": "त्वं",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0020_T0002",
+          "deva": "गु॒णत्र॑याती॒तः",
+          "kind": "word",
+          "joinToNext": true
+        },
+        {
+          "id": "L0020_T0003",
+          "deva": "।",
+          "kind": "punct",
+          "joinToNext": false
+        },
+        {
+          "id": "L0020_T0004",
+          "deva": "त्वं",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0020_T0005",
+          "deva": "अवस्थात्र॑याती॒तः",
+          "kind": "word",
+          "joinToNext": true
+        },
+        {
+          "id": "L0020_T0006",
+          "deva": "।",
+          "kind": "punct",
+          "joinToNext": false
+        },
+        {
+          "id": "L0020_T0007",
+          "deva": "त्वं",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0020_T0008",
+          "deva": "दे॒हत्र॑याती॒तः",
+          "kind": "word",
+          "joinToNext": true
+        },
+        {
+          "id": "L0020_T0009",
+          "deva": "।",
+          "kind": "punct",
+          "joinToNext": false
+        }
+      ]
+    },
+    {
+      "lineId": "L0021",
+      "tokens": [
+        {
+          "id": "L0021_T0001",
+          "deva": "त्वं",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0021_T0002",
+          "deva": "का॒लत्र॑याती॒तः",
+          "kind": "word",
+          "joinToNext": true
+        },
+        {
+          "id": "L0021_T0003",
+          "deva": "।",
+          "kind": "punct",
+          "joinToNext": false
+        },
+        {
+          "id": "L0021_T0004",
+          "deva": "त्वं",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0021_T0005",
+          "deva": "मूलाधारस्थितो॑ऽसि",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0021_T0006",
+          "deva": "नि॒त्यम",
+          "kind": "word",
+          "joinToNext": true
+        },
+        {
+          "id": "L0021_T0007",
+          "deva": "।",
+          "kind": "punct",
+          "joinToNext": false
+        },
+        {
+          "id": "L0021_T0008",
+          "deva": "त्वं",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0021_T0009",
+          "deva": "शक्तित्र॑यात्म॒कः",
+          "kind": "word",
+          "joinToNext": true
+        },
+        {
+          "id": "L0021_T0010",
+          "deva": "।",
+          "kind": "punct",
+          "joinToNext": false
+        }
+      ]
+    },
+    {
+      "lineId": "L0022",
+      "tokens": [
+        {
+          "id": "L0022_T0001",
+          "deva": "त्वां",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0022_T0002",
+          "deva": "योगिनो",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0022_T0003",
+          "deva": "ध्याय॑न्ति",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0022_T0004",
+          "deva": "नि॒त्यम",
+          "kind": "word",
+          "joinToNext": true
+        },
+        {
+          "id": "L0022_T0005",
+          "deva": "।",
+          "kind": "punct",
+          "joinToNext": false
+        },
+        {
+          "id": "L0022_T0006",
+          "deva": "त्वं",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0022_T0007",
+          "deva": "ब्रह्मा",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0022_T0008",
+          "deva": "त्वं",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0022_T0009",
+          "deva": "विष्णुस्त्वं",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0022_T0010",
+          "deva": "रुद्रस्त्वमिन्द्रस्त्वमग्निस्त्वं",
+          "kind": "word",
+          "joinToNext": false
+        }
+      ]
+    },
+    {
+      "lineId": "L0023",
+      "tokens": [
+        {
+          "id": "L0023_T0001",
+          "deva": "वायुस्त्वं",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0023_T0002",
+          "deva": "सूर्यस्त्वं",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0023_T0003",
+          "deva": "चन्द्रमास्त्वं",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0023_T0004",
+          "deva": "ब्रह्म॒",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0023_T0005",
+          "deva": "भूर्भुव॒ः",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0023_T0006",
+          "deva": "स्वरोम",
+          "kind": "word",
+          "joinToNext": true
+        },
+        {
+          "id": "L0023_T0007",
+          "deva": "॥",
+          "kind": "punct",
+          "joinToNext": true
+        },
+        {
+          "id": "L0023_T0008",
+          "deva": "6",
+          "kind": "punct",
+          "joinToNext": true
+        },
+        {
+          "id": "L0023_T0009",
+          "deva": "॥",
+          "kind": "punct",
+          "joinToNext": false
+        }
+      ]
+    },
+    {
+      "lineId": "L0024",
+      "tokens": [
+        {
+          "id": "L0024_T0001",
+          "deva": "ग॒णादिं᳚",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0024_T0002",
+          "deva": "पूर्व॑मुच्चा॒र्य॒",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0024_T0003",
+          "deva": "व॒र्णादिं᳚स्तदन॒न्तरम",
+          "kind": "word",
+          "joinToNext": true
+        },
+        {
+          "id": "L0024_T0004",
+          "deva": "।",
+          "kind": "punct",
+          "joinToNext": false
+        },
+        {
+          "id": "L0024_T0005",
+          "deva": "अनुस्वारः",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0024_T0006",
+          "deva": "प॑रत॒रः",
+          "kind": "word",
+          "joinToNext": true
+        },
+        {
+          "id": "L0024_T0007",
+          "deva": "।",
+          "kind": "punct",
+          "joinToNext": false
+        },
+        {
+          "id": "L0024_T0008",
+          "deva": "अर्धे᳚न्दुल॒सितम",
+          "kind": "word",
+          "joinToNext": true
+        },
+        {
+          "id": "L0024_T0009",
+          "deva": "।",
+          "kind": "punct",
+          "joinToNext": false
+        }
+      ]
+    },
+    {
+      "lineId": "L0025",
+      "tokens": [
+        {
+          "id": "L0025_T0001",
+          "deva": "तारे॑ण",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0025_T0002",
+          "deva": "ऋ॒द्धम",
+          "kind": "word",
+          "joinToNext": true
+        },
+        {
+          "id": "L0025_T0003",
+          "deva": "।",
+          "kind": "punct",
+          "joinToNext": false
+        },
+        {
+          "id": "L0025_T0004",
+          "deva": "एतत्तव",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0025_T0005",
+          "deva": "मनु॑स्वरू॒पम",
+          "kind": "word",
+          "joinToNext": true
+        },
+        {
+          "id": "L0025_T0006",
+          "deva": "।",
+          "kind": "punct",
+          "joinToNext": false
+        },
+        {
+          "id": "L0025_T0007",
+          "deva": "गकारः",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0025_T0008",
+          "deva": "पू᳚र्वरू॒पम",
+          "kind": "word",
+          "joinToNext": true
+        },
+        {
+          "id": "L0025_T0009",
+          "deva": "।",
+          "kind": "punct",
+          "joinToNext": false
+        },
+        {
+          "id": "L0025_T0010",
+          "deva": "अकारो",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0025_T0011",
+          "deva": "मध्य॑मरू॒पम",
+          "kind": "word",
+          "joinToNext": true
+        },
+        {
+          "id": "L0025_T0012",
+          "deva": "।",
+          "kind": "punct",
+          "joinToNext": false
+        }
+      ]
+    },
+    {
+      "lineId": "L0026",
+      "tokens": [
+        {
+          "id": "L0026_T0001",
+          "deva": "अनुस्वारश्चा᳚न्त्यरू॒पम",
+          "kind": "word",
+          "joinToNext": true
+        },
+        {
+          "id": "L0026_T0002",
+          "deva": "।",
+          "kind": "punct",
+          "joinToNext": false
+        },
+        {
+          "id": "L0026_T0003",
+          "deva": "बिन्दुरुत्त॑ररू॒पम",
+          "kind": "word",
+          "joinToNext": true
+        },
+        {
+          "id": "L0026_T0004",
+          "deva": "।",
+          "kind": "punct",
+          "joinToNext": false
+        },
+        {
+          "id": "L0026_T0005",
+          "deva": "नाद॑ः",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0026_T0006",
+          "deva": "सन्धा॒नम",
+          "kind": "word",
+          "joinToNext": true
+        },
+        {
+          "id": "L0026_T0007",
+          "deva": "।",
+          "kind": "punct",
+          "joinToNext": false
+        },
+        {
+          "id": "L0026_T0008",
+          "deva": "सँहि॑ता",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0026_T0009",
+          "deva": "स॒न्धिः",
+          "kind": "word",
+          "joinToNext": true
+        },
+        {
+          "id": "L0026_T0010",
+          "deva": "।",
+          "kind": "punct",
+          "joinToNext": false
+        }
+      ]
+    },
+    {
+      "lineId": "L0027",
+      "tokens": [
+        {
+          "id": "L0027_T0001",
+          "deva": "सैषा",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0027_T0002",
+          "deva": "गणे॑शवि॒द्या",
+          "kind": "word",
+          "joinToNext": true
+        },
+        {
+          "id": "L0027_T0003",
+          "deva": "।",
+          "kind": "punct",
+          "joinToNext": false
+        },
+        {
+          "id": "L0027_T0004",
+          "deva": "गण॑क",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0027_T0005",
+          "deva": "ऋ॒षिः",
+          "kind": "word",
+          "joinToNext": true
+        },
+        {
+          "id": "L0027_T0006",
+          "deva": "।",
+          "kind": "punct",
+          "joinToNext": false
+        },
+        {
+          "id": "L0027_T0007",
+          "deva": "निचृद्गाय॑त्रीच्छ॒न्दः",
+          "kind": "word",
+          "joinToNext": true
+        },
+        {
+          "id": "L0027_T0008",
+          "deva": "।",
+          "kind": "punct",
+          "joinToNext": false
+        }
+      ]
+    },
+    {
+      "lineId": "L0028",
+      "tokens": [
+        {
+          "id": "L0028_T0001",
+          "deva": "गणपति॑र्देव॒ता",
+          "kind": "word",
+          "joinToNext": true
+        },
+        {
+          "id": "L0028_T0002",
+          "deva": "।",
+          "kind": "punct",
+          "joinToNext": false
+        },
+        {
+          "id": "L0028_T0003",
+          "deva": "ॐ",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0028_T0004",
+          "deva": "गं",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0028_T0005",
+          "deva": "ग॒णप॑तये",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0028_T0006",
+          "deva": "नमः",
+          "kind": "word",
+          "joinToNext": true
+        },
+        {
+          "id": "L0028_T0007",
+          "deva": "॥",
+          "kind": "punct",
+          "joinToNext": true
+        },
+        {
+          "id": "L0028_T0008",
+          "deva": "7",
+          "kind": "punct",
+          "joinToNext": true
+        },
+        {
+          "id": "L0028_T0009",
+          "deva": "॥",
+          "kind": "punct",
+          "joinToNext": false
+        }
+      ]
+    },
+    {
+      "lineId": "L0029",
+      "tokens": [
+        {
+          "id": "L0029_T0001",
+          "deva": "एकद॒न्ताय॑",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0029_T0002",
+          "deva": "वि॒द्महे॑",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0029_T0003",
+          "deva": "वक्रतु॒ण्डाय॑",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0029_T0004",
+          "deva": "धीमहि",
+          "kind": "word",
+          "joinToNext": true
+        },
+        {
+          "id": "L0029_T0005",
+          "deva": "।",
+          "kind": "punct",
+          "joinToNext": false
+        },
+        {
+          "id": "L0029_T0006",
+          "deva": "तन्नो॑",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0029_T0007",
+          "deva": "दन्तिः",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0029_T0008",
+          "deva": "प्रचो॒दया᳚त",
+          "kind": "word",
+          "joinToNext": true
+        },
+        {
+          "id": "L0029_T0009",
+          "deva": "॥",
+          "kind": "punct",
+          "joinToNext": true
+        },
+        {
+          "id": "L0029_T0010",
+          "deva": "8",
+          "kind": "punct",
+          "joinToNext": true
+        },
+        {
+          "id": "L0029_T0011",
+          "deva": "॥",
+          "kind": "punct",
+          "joinToNext": false
+        }
+      ]
+    },
+    {
+      "lineId": "L0030",
+      "tokens": [
+        {
+          "id": "L0030_T0001",
+          "deva": "एकद॒न्तं",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0030_T0002",
+          "deva": "च॑तुर्ह॒स्तं॒",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0030_T0003",
+          "deva": "पा॒शम॑ङ्कुश॒धारि॑णम",
+          "kind": "word",
+          "joinToNext": true
+        },
+        {
+          "id": "L0030_T0004",
+          "deva": "।",
+          "kind": "punct",
+          "joinToNext": false
+        },
+        {
+          "id": "L0030_T0005",
+          "deva": "रदं॑",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0030_T0006",
+          "deva": "च॒",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0030_T0007",
+          "deva": "वर॑दं",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0030_T0008",
+          "deva": "ह॒स्तै॒र्बि॒भ्राणं॑",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0030_T0009",
+          "deva": "मूष॒कध्व॑जम",
+          "kind": "word",
+          "joinToNext": true
+        },
+        {
+          "id": "L0030_T0010",
+          "deva": "।",
+          "kind": "punct",
+          "joinToNext": false
+        }
+      ]
+    },
+    {
+      "lineId": "L0031",
+      "tokens": [
+        {
+          "id": "L0031_T0001",
+          "deva": "रक्तं॑",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0031_T0002",
+          "deva": "ल॒म्बोद॑रं",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0031_T0003",
+          "deva": "शू॒र्प॒क॒र्णकं॑",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0031_T0004",
+          "deva": "रक्त॒वास॑सम",
+          "kind": "word",
+          "joinToNext": true
+        },
+        {
+          "id": "L0031_T0005",
+          "deva": "।",
+          "kind": "punct",
+          "joinToNext": false
+        },
+        {
+          "id": "L0031_T0006",
+          "deva": "रक्त॑ग॒न्धानु॑लिप्ता॒ङ्गं॒",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0031_T0007",
+          "deva": "र॒क्तपु॑ष्पैः",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0031_T0008",
+          "deva": "सु॒पूजि॑तम",
+          "kind": "word",
+          "joinToNext": true
+        },
+        {
+          "id": "L0031_T0009",
+          "deva": "।",
+          "kind": "punct",
+          "joinToNext": false
+        }
+      ]
+    },
+    {
+      "lineId": "L0032",
+      "tokens": [
+        {
+          "id": "L0032_T0001",
+          "deva": "भक्ता॑नु॒कम्पि॑नं",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0032_T0002",
+          "deva": "दे॒वं॒",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0032_T0003",
+          "deva": "ज॒गत्का॑रण॒मच्यु॑तम",
+          "kind": "word",
+          "joinToNext": true
+        },
+        {
+          "id": "L0032_T0004",
+          "deva": "।",
+          "kind": "punct",
+          "joinToNext": false
+        },
+        {
+          "id": "L0032_T0005",
+          "deva": "आवि॑र्भू॒तं",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0032_T0006",
+          "deva": "च॑",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0032_T0007",
+          "deva": "सृ॒ष्ट्या॒दौ॒",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0032_T0008",
+          "deva": "प्र॒कृते᳚ः",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0032_T0009",
+          "deva": "पुरु॒षात्प॑रम",
+          "kind": "word",
+          "joinToNext": true
+        },
+        {
+          "id": "L0032_T0010",
+          "deva": "।",
+          "kind": "punct",
+          "joinToNext": false
+        }
+      ]
+    },
+    {
+      "lineId": "L0033",
+      "tokens": [
+        {
+          "id": "L0033_T0001",
+          "deva": "एवं॑",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0033_T0002",
+          "deva": "ध्या॒यति॑",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0033_T0003",
+          "deva": "यो",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0033_T0004",
+          "deva": "नि॒त्यं॒",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0033_T0005",
+          "deva": "स॒",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0033_T0006",
+          "deva": "योगी॑",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0033_T0007",
+          "deva": "योगि॒नां",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0033_T0008",
+          "deva": "व॑रः",
+          "kind": "word",
+          "joinToNext": true
+        },
+        {
+          "id": "L0033_T0009",
+          "deva": "॥",
+          "kind": "punct",
+          "joinToNext": true
+        },
+        {
+          "id": "L0033_T0010",
+          "deva": "9",
+          "kind": "punct",
+          "joinToNext": true
+        },
+        {
+          "id": "L0033_T0011",
+          "deva": "॥",
+          "kind": "punct",
+          "joinToNext": false
+        }
+      ]
+    },
+    {
+      "lineId": "L0034",
+      "tokens": [
+        {
+          "id": "L0034_T0001",
+          "deva": "नमो",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0034_T0002",
+          "deva": "व्रातपतये",
+          "kind": "word",
+          "joinToNext": true
+        },
+        {
+          "id": "L0034_T0003",
+          "deva": "।",
+          "kind": "punct",
+          "joinToNext": false
+        },
+        {
+          "id": "L0034_T0004",
+          "deva": "नमो",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0034_T0005",
+          "deva": "गणपतये",
+          "kind": "word",
+          "joinToNext": true
+        },
+        {
+          "id": "L0034_T0006",
+          "deva": "।",
+          "kind": "punct",
+          "joinToNext": false
+        },
+        {
+          "id": "L0034_T0007",
+          "deva": "नमः",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0034_T0008",
+          "deva": "प्रमथपतये",
+          "kind": "word",
+          "joinToNext": true
+        },
+        {
+          "id": "L0034_T0009",
+          "deva": "।",
+          "kind": "punct",
+          "joinToNext": false
+        }
+      ]
+    },
+    {
+      "lineId": "L0035",
+      "tokens": [
+        {
+          "id": "L0035_T0001",
+          "deva": "नमस्तेऽस्तु",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0035_T0002",
+          "deva": "लम्बोदरायैकदन्ताय",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0035_T0003",
+          "deva": "विघ्नविनाशिने",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0035_T0004",
+          "deva": "शिवसुताय",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0035_T0005",
+          "deva": "श्रीवरदमूर्तये॒",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0035_T0006",
+          "deva": "नम॑ः",
+          "kind": "word",
+          "joinToNext": true
+        },
+        {
+          "id": "L0035_T0007",
+          "deva": "॥",
+          "kind": "punct",
+          "joinToNext": true
+        },
+        {
+          "id": "L0035_T0008",
+          "deva": "10",
+          "kind": "punct",
+          "joinToNext": true
+        },
+        {
+          "id": "L0035_T0009",
+          "deva": "॥",
+          "kind": "punct",
+          "joinToNext": false
+        }
+      ]
+    },
+    {
+      "lineId": "L0036",
+      "tokens": [
+        {
+          "id": "L0036_T0001",
+          "deva": "एतदथर्वशीर्षं॑",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0036_T0002",
+          "deva": "योऽधी॒ते",
+          "kind": "word",
+          "joinToNext": true
+        },
+        {
+          "id": "L0036_T0003",
+          "deva": "।",
+          "kind": "punct",
+          "joinToNext": false
+        },
+        {
+          "id": "L0036_T0004",
+          "deva": "स",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0036_T0005",
+          "deva": "ब्रह्मभूया॑य",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0036_T0006",
+          "deva": "क॒ल्पते",
+          "kind": "word",
+          "joinToNext": true
+        },
+        {
+          "id": "L0036_T0007",
+          "deva": "।",
+          "kind": "punct",
+          "joinToNext": false
+        },
+        {
+          "id": "L0036_T0008",
+          "deva": "स",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0036_T0009",
+          "deva": "सर्वविघ्नै᳚र्न",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0036_T0010",
+          "deva": "बा॒ध्यते",
+          "kind": "word",
+          "joinToNext": true
+        },
+        {
+          "id": "L0036_T0011",
+          "deva": "।",
+          "kind": "punct",
+          "joinToNext": false
+        }
+      ]
+    },
+    {
+      "lineId": "L0037",
+      "tokens": [
+        {
+          "id": "L0037_T0001",
+          "deva": "स",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0037_T0002",
+          "deva": "सर्वतः",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0037_T0003",
+          "deva": "सुख॑मेध॒ते",
+          "kind": "word",
+          "joinToNext": true
+        },
+        {
+          "id": "L0037_T0004",
+          "deva": "।",
+          "kind": "punct",
+          "joinToNext": false
+        },
+        {
+          "id": "L0037_T0005",
+          "deva": "स",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0037_T0006",
+          "deva": "पञ्चमहापापा᳚त",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0037_T0007",
+          "deva": "प्रमु॒च्यते",
+          "kind": "word",
+          "joinToNext": true
+        },
+        {
+          "id": "L0037_T0008",
+          "deva": "।",
+          "kind": "punct",
+          "joinToNext": false
+        }
+      ]
+    },
+    {
+      "lineId": "L0038",
+      "tokens": [
+        {
+          "id": "L0038_T0001",
+          "deva": "सा॒यम॑धीया॒नो॒",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0038_T0002",
+          "deva": "दिवसकृतं",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0038_T0003",
+          "deva": "पापं॑",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0038_T0004",
+          "deva": "नाश॒यति",
+          "kind": "word",
+          "joinToNext": true
+        },
+        {
+          "id": "L0038_T0005",
+          "deva": "।",
+          "kind": "punct",
+          "joinToNext": false
+        },
+        {
+          "id": "L0038_T0006",
+          "deva": "प्रा॒तर॑धीया॒नो॒",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0038_T0007",
+          "deva": "रात्रिकृतं",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0038_T0008",
+          "deva": "पापं॑",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0038_T0009",
+          "deva": "नाश॒यति",
+          "kind": "word",
+          "joinToNext": true
+        },
+        {
+          "id": "L0038_T0010",
+          "deva": "।",
+          "kind": "punct",
+          "joinToNext": false
+        }
+      ]
+    },
+    {
+      "lineId": "L0039",
+      "tokens": [
+        {
+          "id": "L0039_T0001",
+          "deva": "सायं",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0039_T0002",
+          "deva": "प्रातः",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0039_T0003",
+          "deva": "प्र॑युञ्जा॒नो॒",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0039_T0004",
+          "deva": "पापोऽपा॑पो",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0039_T0005",
+          "deva": "भ॒वति",
+          "kind": "word",
+          "joinToNext": true
+        },
+        {
+          "id": "L0039_T0006",
+          "deva": "।",
+          "kind": "punct",
+          "joinToNext": false
+        },
+        {
+          "id": "L0039_T0007",
+          "deva": "सर्वत्राधीयानोऽपवि॑घ्नो",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0039_T0008",
+          "deva": "भ॒वति",
+          "kind": "word",
+          "joinToNext": true
+        },
+        {
+          "id": "L0039_T0009",
+          "deva": "।",
+          "kind": "punct",
+          "joinToNext": false
+        }
+      ]
+    },
+    {
+      "lineId": "L0040",
+      "tokens": [
+        {
+          "id": "L0040_T0001",
+          "deva": "धर्मार्थकाममोक्षं॑",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0040_T0002",
+          "deva": "च",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0040_T0003",
+          "deva": "वि॒न्दति",
+          "kind": "word",
+          "joinToNext": true
+        },
+        {
+          "id": "L0040_T0004",
+          "deva": "।",
+          "kind": "punct",
+          "joinToNext": false
+        },
+        {
+          "id": "L0040_T0005",
+          "deva": "इदमथर्वशीर्षमशिष्याय॑",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0040_T0006",
+          "deva": "न",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0040_T0007",
+          "deva": "दे॒यम",
+          "kind": "word",
+          "joinToNext": true
+        },
+        {
+          "id": "L0040_T0008",
+          "deva": "।",
+          "kind": "punct",
+          "joinToNext": false
+        }
+      ]
+    },
+    {
+      "lineId": "L0041",
+      "tokens": [
+        {
+          "id": "L0041_T0001",
+          "deva": "यो",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0041_T0002",
+          "deva": "यदि",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0041_T0003",
+          "deva": "मो॑हाद",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0041_T0004",
+          "deva": "दा॒स्यति",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0041_T0005",
+          "deva": "स",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0041_T0006",
+          "deva": "पापी॑यान",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0041_T0007",
+          "deva": "भ॒वति",
+          "kind": "word",
+          "joinToNext": true
+        },
+        {
+          "id": "L0041_T0008",
+          "deva": "।",
+          "kind": "punct",
+          "joinToNext": false
+        }
+      ]
+    },
+    {
+      "lineId": "L0042",
+      "tokens": [
+        {
+          "id": "L0042_T0001",
+          "deva": "सहस्रावर्तनाद्यं",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0042_T0002",
+          "deva": "यं",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0042_T0003",
+          "deva": "काम॑मधी॒ते",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0042_T0004",
+          "deva": "तं",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0042_T0005",
+          "deva": "तमने॑न",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0042_T0006",
+          "deva": "सा॒धयेत",
+          "kind": "word",
+          "joinToNext": true
+        },
+        {
+          "id": "L0042_T0007",
+          "deva": "॥",
+          "kind": "punct",
+          "joinToNext": true
+        },
+        {
+          "id": "L0042_T0008",
+          "deva": "11",
+          "kind": "punct",
+          "joinToNext": true
+        },
+        {
+          "id": "L0042_T0009",
+          "deva": "॥",
+          "kind": "punct",
+          "joinToNext": false
+        }
+      ]
+    },
+    {
+      "lineId": "L0043",
+      "tokens": [
+        {
+          "id": "L0043_T0001",
+          "deva": "अनेन",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0043_T0002",
+          "deva": "गणपतिम॑भिषि॒ञ्चति",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0043_T0003",
+          "deva": "स",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0043_T0004",
+          "deva": "वा॑ग्मी",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0043_T0005",
+          "deva": "भ॒वति",
+          "kind": "word",
+          "joinToNext": true
+        },
+        {
+          "id": "L0043_T0006",
+          "deva": "।",
+          "kind": "punct",
+          "joinToNext": false
+        }
+      ]
+    },
+    {
+      "lineId": "L0044",
+      "tokens": [
+        {
+          "id": "L0044_T0001",
+          "deva": "चतुर्थ्यामन॑श्नन",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0044_T0002",
+          "deva": "ज॒पति",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0044_T0003",
+          "deva": "स",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0044_T0004",
+          "deva": "विद्या॑वान",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0044_T0005",
+          "deva": "भ॒वति",
+          "kind": "word",
+          "joinToNext": true
+        },
+        {
+          "id": "L0044_T0006",
+          "deva": "।",
+          "kind": "punct",
+          "joinToNext": false
+        },
+        {
+          "id": "L0044_T0007",
+          "deva": "इत्यथर्व॑णवा॒क्यम",
+          "kind": "word",
+          "joinToNext": true
+        },
+        {
+          "id": "L0044_T0008",
+          "deva": "।",
+          "kind": "punct",
+          "joinToNext": false
+        }
+      ]
+    },
+    {
+      "lineId": "L0045",
+      "tokens": [
+        {
+          "id": "L0045_T0001",
+          "deva": "ब्रह्माद्यावर॑णं",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0045_T0002",
+          "deva": "वि॒द्यान्न",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0045_T0003",
+          "deva": "बिभेति",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0045_T0004",
+          "deva": "कदा॑चने॒ति",
+          "kind": "word",
+          "joinToNext": true
+        },
+        {
+          "id": "L0045_T0005",
+          "deva": "॥",
+          "kind": "punct",
+          "joinToNext": true
+        },
+        {
+          "id": "L0045_T0006",
+          "deva": "12",
+          "kind": "punct",
+          "joinToNext": true
+        },
+        {
+          "id": "L0045_T0007",
+          "deva": "॥",
+          "kind": "punct",
+          "joinToNext": false
+        }
+      ]
+    },
+    {
+      "lineId": "L0046",
+      "tokens": [
+        {
+          "id": "L0046_T0001",
+          "deva": "यो",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0046_T0002",
+          "deva": "दूर्वाङ्कु॑रैर्य॒जति",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0046_T0003",
+          "deva": "स",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0046_T0004",
+          "deva": "वैश्रवणोप॑मो",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0046_T0005",
+          "deva": "भ॒वति",
+          "kind": "word",
+          "joinToNext": true
+        },
+        {
+          "id": "L0046_T0006",
+          "deva": "।",
+          "kind": "punct",
+          "joinToNext": false
+        }
+      ]
+    },
+    {
+      "lineId": "L0047",
+      "tokens": [
+        {
+          "id": "L0047_T0001",
+          "deva": "यो",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0047_T0002",
+          "deva": "ला॑जैर्य॒जति",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0047_T0003",
+          "deva": "स",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0047_T0004",
+          "deva": "यशो॑वान",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0047_T0005",
+          "deva": "भ॒वति",
+          "kind": "word",
+          "joinToNext": true
+        },
+        {
+          "id": "L0047_T0006",
+          "deva": "।",
+          "kind": "punct",
+          "joinToNext": false
+        },
+        {
+          "id": "L0047_T0007",
+          "deva": "स",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0047_T0008",
+          "deva": "मेधा॑वान",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0047_T0009",
+          "deva": "भ॒वति",
+          "kind": "word",
+          "joinToNext": true
+        },
+        {
+          "id": "L0047_T0010",
+          "deva": "।",
+          "kind": "punct",
+          "joinToNext": false
+        }
+      ]
+    },
+    {
+      "lineId": "L0048",
+      "tokens": [
+        {
+          "id": "L0048_T0001",
+          "deva": "यो",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0048_T0002",
+          "deva": "मोदकसहस्रे॑ण",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0048_T0003",
+          "deva": "य॒जति",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0048_T0004",
+          "deva": "स",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0048_T0005",
+          "deva": "वाञ्छितफलम॑वाप्नो॒ति",
+          "kind": "word",
+          "joinToNext": true
+        },
+        {
+          "id": "L0048_T0006",
+          "deva": "।",
+          "kind": "punct",
+          "joinToNext": false
+        }
+      ]
+    },
+    {
+      "lineId": "L0049",
+      "tokens": [
+        {
+          "id": "L0049_T0001",
+          "deva": "यः",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0049_T0002",
+          "deva": "साज्य",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0049_T0003",
+          "deva": "समि॑द्भिर्य॒जति",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0049_T0004",
+          "deva": "स",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0049_T0005",
+          "deva": "सर्वं",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0049_T0006",
+          "deva": "लभते",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0049_T0007",
+          "deva": "स",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0049_T0008",
+          "deva": "स॑र्वं",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0049_T0009",
+          "deva": "ल॒भते",
+          "kind": "word",
+          "joinToNext": true
+        },
+        {
+          "id": "L0049_T0010",
+          "deva": "॥",
+          "kind": "punct",
+          "joinToNext": true
+        },
+        {
+          "id": "L0049_T0011",
+          "deva": "13",
+          "kind": "punct",
+          "joinToNext": true
+        },
+        {
+          "id": "L0049_T0012",
+          "deva": "॥",
+          "kind": "punct",
+          "joinToNext": false
+        }
+      ]
+    },
+    {
+      "lineId": "L0050",
+      "tokens": [
+        {
+          "id": "L0050_T0001",
+          "deva": "अष्टौ",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0050_T0002",
+          "deva": "ब्राह्मणान",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0050_T0003",
+          "deva": "सम्यग",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0050_T0004",
+          "deva": "ग्रा॑हयि॒त्वा",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0050_T0005",
+          "deva": "सूर्यवर्च॑स्वी",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0050_T0006",
+          "deva": "भ॒वति",
+          "kind": "word",
+          "joinToNext": true
+        },
+        {
+          "id": "L0050_T0007",
+          "deva": "।",
+          "kind": "punct",
+          "joinToNext": false
+        }
+      ]
+    },
+    {
+      "lineId": "L0051",
+      "tokens": [
+        {
+          "id": "L0051_T0001",
+          "deva": "सूर्यग्रहे",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0051_T0002",
+          "deva": "म॑हान॒द्यां",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0051_T0003",
+          "deva": "प्रतिमासन्निधौ",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0051_T0004",
+          "deva": "वा",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0051_T0005",
+          "deva": "ज॒प्त्वा",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0051_T0006",
+          "deva": "सिद्धम॑न्त्रो",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0051_T0007",
+          "deva": "भ॒वति",
+          "kind": "word",
+          "joinToNext": true
+        },
+        {
+          "id": "L0051_T0008",
+          "deva": "।",
+          "kind": "punct",
+          "joinToNext": false
+        }
+      ]
+    },
+    {
+      "lineId": "L0052",
+      "tokens": [
+        {
+          "id": "L0052_T0001",
+          "deva": "महाविघ्ना᳚त",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0052_T0002",
+          "deva": "प्रमु॒च्यते",
+          "kind": "word",
+          "joinToNext": true
+        },
+        {
+          "id": "L0052_T0003",
+          "deva": "।",
+          "kind": "punct",
+          "joinToNext": false
+        },
+        {
+          "id": "L0052_T0004",
+          "deva": "महादोषा᳚त",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0052_T0005",
+          "deva": "प्रमु॒च्यते",
+          "kind": "word",
+          "joinToNext": true
+        },
+        {
+          "id": "L0052_T0006",
+          "deva": "।",
+          "kind": "punct",
+          "joinToNext": false
+        },
+        {
+          "id": "L0052_T0007",
+          "deva": "महापापा᳚त",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0052_T0008",
+          "deva": "प्रमु॒च्यते",
+          "kind": "word",
+          "joinToNext": true
+        },
+        {
+          "id": "L0052_T0009",
+          "deva": "।",
+          "kind": "punct",
+          "joinToNext": false
+        }
+      ]
+    },
+    {
+      "lineId": "L0053",
+      "tokens": [
+        {
+          "id": "L0053_T0001",
+          "deva": "महाप्रत्यवाया᳚त",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0053_T0002",
+          "deva": "प्रमु॒च्यते",
+          "kind": "word",
+          "joinToNext": true
+        },
+        {
+          "id": "L0053_T0003",
+          "deva": "।",
+          "kind": "punct",
+          "joinToNext": false
+        },
+        {
+          "id": "L0053_T0004",
+          "deva": "स",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0053_T0005",
+          "deva": "सर्वविद्भवति",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0053_T0006",
+          "deva": "स",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0053_T0007",
+          "deva": "सर्व॑विद्भ॒वति",
+          "kind": "word",
+          "joinToNext": true
+        },
+        {
+          "id": "L0053_T0008",
+          "deva": "।",
+          "kind": "punct",
+          "joinToNext": false
+        }
+      ]
+    },
+    {
+      "lineId": "L0054",
+      "tokens": [
+        {
+          "id": "L0054_T0001",
+          "deva": "य",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0054_T0002",
+          "deva": "ए॑वं",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0054_T0003",
+          "deva": "वे॒द",
+          "kind": "word",
+          "joinToNext": true
+        },
+        {
+          "id": "L0054_T0004",
+          "deva": "।",
+          "kind": "punct",
+          "joinToNext": false
+        },
+        {
+          "id": "L0054_T0005",
+          "deva": "इत्यु॑प॒निष॑त",
+          "kind": "word",
+          "joinToNext": true
+        },
+        {
+          "id": "L0054_T0006",
+          "deva": "॥",
+          "kind": "punct",
+          "joinToNext": true
+        },
+        {
+          "id": "L0054_T0007",
+          "deva": "14",
+          "kind": "punct",
+          "joinToNext": true
+        },
+        {
+          "id": "L0054_T0008",
+          "deva": "॥",
+          "kind": "punct",
+          "joinToNext": false
+        }
+      ]
+    },
+    {
+      "lineId": "L0055",
+      "tokens": [
+        {
+          "id": "L0055_T0001",
+          "deva": "ॐ",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0055_T0002",
+          "deva": "शान्ति॒ः",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0055_T0003",
+          "deva": "शान्ति॒ः",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0055_T0004",
+          "deva": "शान्ति॑ः",
+          "kind": "word",
+          "joinToNext": true
+        },
+        {
+          "id": "L0055_T0005",
+          "deva": "॥",
+          "kind": "punct",
+          "joinToNext": false
+        }
+      ]
+    },
+    {
+      "lineId": "L0056",
+      "tokens": [
+        {
+          "id": "L0056_T0001",
+          "deva": "ॐ",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0056_T0002",
+          "deva": "स॒ह",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0056_T0003",
+          "deva": "ना॑ववतु",
+          "kind": "word",
+          "joinToNext": true
+        },
+        {
+          "id": "L0056_T0004",
+          "deva": "।",
+          "kind": "punct",
+          "joinToNext": false
+        },
+        {
+          "id": "L0056_T0005",
+          "deva": "स॒ह",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0056_T0006",
+          "deva": "नौ॑",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0056_T0007",
+          "deva": "भुनक्तु",
+          "kind": "word",
+          "joinToNext": true
+        },
+        {
+          "id": "L0056_T0008",
+          "deva": "।",
+          "kind": "punct",
+          "joinToNext": false
+        }
+      ]
+    },
+    {
+      "lineId": "L0057",
+      "tokens": [
+        {
+          "id": "L0057_T0001",
+          "deva": "स॒ह",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0057_T0002",
+          "deva": "वी॒र्यं॑",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0057_T0003",
+          "deva": "करवावहै",
+          "kind": "word",
+          "joinToNext": true
+        },
+        {
+          "id": "L0057_T0004",
+          "deva": "।",
+          "kind": "punct",
+          "joinToNext": false
+        }
+      ]
+    },
+    {
+      "lineId": "L0058",
+      "tokens": [
+        {
+          "id": "L0058_T0001",
+          "deva": "ते॒ज॒स्विना॒वधी॑तमस्तु॒",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0058_T0002",
+          "deva": "मा",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0058_T0003",
+          "deva": "वि॑द्विषा॒वहै᳚",
+          "kind": "word",
+          "joinToNext": true
+        },
+        {
+          "id": "L0058_T0004",
+          "deva": "।",
+          "kind": "punct",
+          "joinToNext": false
+        }
+      ]
+    },
+    {
+      "lineId": "L0059",
+      "tokens": [
+        {
+          "id": "L0059_T0001",
+          "deva": "ॐ",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0059_T0002",
+          "deva": "शान्ति॒ः",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0059_T0003",
+          "deva": "शान्ति॒ः",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0059_T0004",
+          "deva": "शान्ति॑ः",
+          "kind": "word",
+          "joinToNext": true
+        },
+        {
+          "id": "L0059_T0005",
+          "deva": "॥",
+          "kind": "punct",
+          "joinToNext": false
+        }
+      ]
+    },
+    {
+      "lineId": "L0060",
+      "tokens": [
+        {
+          "id": "L0060_T0001",
+          "deva": "ॐ",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0060_T0002",
+          "deva": "भ॒द्रं",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0060_T0003",
+          "deva": "कर्णे॑भिः",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0060_T0004",
+          "deva": "शृणु॒याम॑",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0060_T0005",
+          "deva": "देवाः",
+          "kind": "word",
+          "joinToNext": true
+        },
+        {
+          "id": "L0060_T0006",
+          "deva": "।",
+          "kind": "punct",
+          "joinToNext": false
+        },
+        {
+          "id": "L0060_T0007",
+          "deva": "भ॒द्रं",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0060_T0008",
+          "deva": "प॑श्येमा॒क्षभि॒र्यज॑त्राः",
+          "kind": "word",
+          "joinToNext": true
+        },
+        {
+          "id": "L0060_T0009",
+          "deva": "।",
+          "kind": "punct",
+          "joinToNext": false
+        }
+      ]
+    },
+    {
+      "lineId": "L0061",
+      "tokens": [
+        {
+          "id": "L0061_T0001",
+          "deva": "स्थि॒रैरङ्गै᳚स्तुष्टु॒वाँ",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0061_T0002",
+          "deva": "स॑स्त॒नूभि॑ः",
+          "kind": "word",
+          "joinToNext": true
+        },
+        {
+          "id": "L0061_T0003",
+          "deva": "।",
+          "kind": "punct",
+          "joinToNext": false
+        },
+        {
+          "id": "L0061_T0004",
+          "deva": "व्यशे॑म",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0061_T0005",
+          "deva": "दे॒वहि॑तं॒",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0061_T0006",
+          "deva": "यदायु॑ः",
+          "kind": "word",
+          "joinToNext": true
+        },
+        {
+          "id": "L0061_T0007",
+          "deva": "।",
+          "kind": "punct",
+          "joinToNext": false
+        }
+      ]
+    },
+    {
+      "lineId": "L0062",
+      "tokens": [
+        {
+          "id": "L0062_T0001",
+          "deva": "स्व॒स्ति",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0062_T0002",
+          "deva": "न॒",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0062_T0003",
+          "deva": "इन्द्रो॑",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0062_T0004",
+          "deva": "वृ॒द्धश्र॑वाः",
+          "kind": "word",
+          "joinToNext": true
+        },
+        {
+          "id": "L0062_T0005",
+          "deva": "।",
+          "kind": "punct",
+          "joinToNext": false
+        },
+        {
+          "id": "L0062_T0006",
+          "deva": "स्व॒स्ति",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0062_T0007",
+          "deva": "न॑ः",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0062_T0008",
+          "deva": "पू॒षा",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0062_T0009",
+          "deva": "वि॒श्ववे॑दाः",
+          "kind": "word",
+          "joinToNext": true
+        },
+        {
+          "id": "L0062_T0010",
+          "deva": "।",
+          "kind": "punct",
+          "joinToNext": false
+        }
+      ]
+    },
+    {
+      "lineId": "L0063",
+      "tokens": [
+        {
+          "id": "L0063_T0001",
+          "deva": "स्व॒स्ति",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0063_T0002",
+          "deva": "न॒स्तार्क्ष्यो॒",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0063_T0003",
+          "deva": "अरि॑ष्टनेमिः",
+          "kind": "word",
+          "joinToNext": true
+        },
+        {
+          "id": "L0063_T0004",
+          "deva": "।",
+          "kind": "punct",
+          "joinToNext": false
+        },
+        {
+          "id": "L0063_T0005",
+          "deva": "स्व॒स्ति",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0063_T0006",
+          "deva": "नो॒",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0063_T0007",
+          "deva": "बृह॒स्पति॑र्दधातु",
+          "kind": "word",
+          "joinToNext": true
+        },
+        {
+          "id": "L0063_T0008",
+          "deva": "॥",
+          "kind": "punct",
+          "joinToNext": false
+        }
+      ]
+    },
+    {
+      "lineId": "L0064",
+      "tokens": [
+        {
+          "id": "L0064_T0001",
+          "deva": "ॐ",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0064_T0002",
+          "deva": "शान्ति॒ः",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0064_T0003",
+          "deva": "शान्ति॒ः",
+          "kind": "word",
+          "joinToNext": false
+        },
+        {
+          "id": "L0064_T0004",
+          "deva": "शान्ति॑ः",
+          "kind": "word",
+          "joinToNext": true
+        },
+        {
+          "id": "L0064_T0005",
+          "deva": "॥",
+          "kind": "punct",
+          "joinToNext": false
+        }
+      ]
+    }
+  ]
+}

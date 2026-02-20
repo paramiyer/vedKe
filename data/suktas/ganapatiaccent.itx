@@ -1,0 +1,126 @@
+% Text title            : Ganapati Atharvashirsha Upanishad with Vedic Accents
+% File name             : ganapatiaccent.itx
+% Category              : atharvashIrSha, upanishhat, svara, ganesha, veda, upaniShat
+% Location              : doc\_veda
+% Author                : Vedic tradition
+% Transliterated by     : Sunder Hattangadi and Kirk Wortman kirkwort at hotmail.com
+% Proofread by          : Kirk Wortman, Daya Aithal, NA
+% Description-comments  : 89 / 108; Atharva Veda - Shaiva upanishad. Mantrapushpam, Ramakrishna Mission
+% Latest update         : December 25, 2023
+% Send corrections to   : sanskrit at cheerful dot c om
+%
+% This text is prepared by volunteers and is to be used for personal study 
+% and research. The file is not to be copied or reposted for promotion of 
+% any website or individuals or for commercial purpose without permission. 
+% Please help to maintain respect for volunteer spirit.
+%
+\documentstyle[11pt,multicol,itrans]{article}
+#include=ijag.inc
+#endwordvowel=.h
+\portraitwide
+\parindent=100pt                
+\let\usedvng=\Largedvng      % for 1 column     
+\pagenumbering{itrans} 
+\def\engtitle#1{\hrule\medskip\centerline{\LARGE #1}}
+\def\itxtitle#1{\medskip\centerline{\LARGEdvng #1}\medskip\hrule}
+\def\endtitles{\medskip\obeyspaceslines}
+%%
+\begin{document}
+\engtitle{.. Shri Ganapati Atharvashirsha Upanishat or Ganapati Upanishat with Accents ..}##
+\itxtitle{.. shrIgaNapatyatharvashIrShopaniShat gaNapatyupaniShat sasvara ..}##\endtitles ##
+gaNeshAtharvashIrSham
+
+OM bha\`dra.n karNe\'bhiH shR^iNu\`yAma\' devAH . bha\`dra.n pa\'shyemA\`kShabhi\`ryaja\'trAH .
+sthi\`raira~Ngai\"stuShTu\`vA{\m+} sa\'sta\`nUbhi\'H . vyashe\'ma de\`vahi\'ta.n\` yadAyu\'H .
+sva\`sti na\` indro\' vR^i\`ddhashra\'vAH . sva\`sti na\'H pU\`ShA vi\`shvave\'dAH .
+sva\`sti na\`stArkShyo\` ari\'ShTanemiH . sva\`sti no\` bR^iha\`spati\'rdadhAtu .. 
+OM shAnti\`H shAnti\`H shAnti\'H ..
+
+OM nama\'ste ga\`Napa\'taye . tvame\`va pra\`tyakSha.n\` tattva\'masi .
+tvame\`va ke\`vala.n\` kartA\'.asi . tvame\`va ke\`vala.n\` dhartA\'.asi . tvame\`va ke\`vala.n\` hartA\'.asi .
+tvameva sarva.n khalvidaM\' brahmA\`si . tva.n sAkShAdAtmA\'.asi ni\`tyam .. 1..
+
+R^i\'ta.n va\`chmi . sa\'tya.n va\`chmi .. 2..
+
+a\`va tvaM\` mAm . ava\' va\`ktAram\" . ava\' shro\`tAram\" . ava\' dA\`tAram\" . ava\' dhA\`tAram\" .
+avAnUchAnama\'va shi\`Shyam . ava\' pa\`shchAttA\"t . ava\' pu\`rastA\"t . avotta\`rAttA\"t .
+ava\' dakShi\`NAttA\"t . ava\' cho\`rdhvAttA\"t . avAdha\`rAttA\"t .
+sarvato mAM pAhi pAhi\' sama\`ntAt .. 3..
+
+tva.n vA~Nmaya\'stva.n chinma\`yaH . tvamAnandamaya\'stvaM brahma\`mayaH . tva.n sachchidAnandA.advi\'tIyo\`.asi .
+tvaM pra\`tyakShaM\` brahmA\'si . tva.n j~nAnamayo vij~nAna\'mayo\`.asi .. 4..
+
+sarva.n jagadida.n tva\'tto jA\`yate . sarva.n jagadida.n tva\'ttasti\`ShThati .
+sarva.n jagadida.n tvayi la\'yameShya\`ti . sarva.n jagadida.n tvayi\' pratye\`ti .
+tvaM bhUmirApo.analo.ani\'lo na\`bhaH . tva.n chatvAri vA\"kpadA\`ni .. 5..
+
+tva.n gu\`Natra\'yAtI\`taH . tva.n avasthAtra\'yAtI\`taH . tva.n de\`hatra\'yAtI\`taH .
+tva.n kA\`latra\'yAtI\`taH . tvaM mUlAdhArasthito\'.asi ni\`tyam . tva.n shaktitra\'yAtma\`kaH .
+tvA.n yogino dhyAya\'nti ni\`tyam . tvaM brahmA tva.n viShNustva.n rudrastvamindrastvamagnistva.n
+vAyustva.n sUryastva.n chandramAstvaM brahma\` bhUrbhuva\`H svarom .. 6..
+
+ga\`NAdiM\" pUrva\'muchchA\`rya\` va\`rNAdi.n\"stadana\`ntaram . anusvAraH pa\'rata\`raH . ardhe\"ndula\`sitam .
+tAre\'Na R^i\`ddham . etattava manu\'svarU\`pam . gakAraH pU\"rvarU\`pam . akAro madhya\'marU\`pam .
+anusvArashchA\"ntyarU\`pam . bindurutta\'rarU\`pam . nAda\'H sandhA\`nam . sa{\m+}hi\'tA sa\`ndhiH .
+saiShA gaNe\'shavi\`dyA . gaNa\'ka R^i\`ShiH . nichR^idgAya\'trIchCha\`ndaH .
+gaNapati\'rdeva\`tA . OM ga.n ga\`Napa\'taye namaH .. 7..
+
+ekada\`ntAya\' vi\`dmahe\' vakratu\`NDAya\' dhImahi . tanno\' dantiH pracho\`dayA\"t .. 8..
+
+ekada\`nta.n cha\'turha\`staM\` pA\`shama\'~Nkusha\`dhAri\'Nam . rada.n\' cha\` vara\'da.n ha\`stai\`rbi\`bhrANaM\' mUSha\`kadhva\'jam .
+rakta.n\' la\`mboda\'ra.n shU\`rpa\`ka\`rNaka.n\' rakta\`vAsa\'sam . rakta\'ga\`ndhAnu\'liptA\`~Nga.n\` ra\`ktapu\'ShpaiH su\`pUji\'tam .
+bhaktA\'nu\`kampi\'na.n de\`va.n\` ja\`gatkA\'raNa\`machyu\'tam . Avi\'rbhU\`ta.n cha\' sR^i\`ShTyA\`dau\` pra\`kR^ite\"H puru\`ShAtpa\'ram .
+eva.n\' dhyA\`yati\' yo ni\`tya.n\` sa\` yogI\' yogi\`nA.n va\'raH .. 9..
+
+namo vrAtapataye . namo gaNapataye . namaH pramathapataye .
+namaste.astu lambodarAyaikadantAya vighnavinAshine shivasutAya shrIvaradamUrtaye\` nama\'H .. 10..
+
+etadatharvashIrSha.n\' yo.adhI\`te . sa brahmabhUyA\'ya ka\`lpate . sa sarvavighnai\"rna bA\`dhyate .
+sa sarvataH sukha\'medha\`te . sa pa~nchamahApApA\"t pramu\`chyate .
+sA\`yama\'dhIyA\`no\` divasakR^itaM pApa.n\' nAsha\`yati . prA\`tara\'dhIyA\`no\` rAtrikR^itaM pApa.n\' nAsha\`yati .
+sAyaM prAtaH pra\'yu~njA\`no\` pApo.apA\'po bha\`vati . sarvatrAdhIyAno.apavi\'ghno bha\`vati .
+dharmArthakAmamokSha.n\' cha vi\`ndati . idamatharvashIrShamashiShyAya\' na de\`yam .
+yo yadi mo\'hAd dA\`syati sa pApI\'yAn bha\`vati .
+sahasrAvartanAdya.n ya.n kAma\'madhI\`te ta.n tamane\'na sA\`dhayet .. 11..
+
+anena gaNapatima\'bhiShi\`~nchati sa vA\'gmI bha\`vati .
+chaturthyAmana\'shnan ja\`pati sa vidyA\'vAn bha\`vati . ityatharva\'NavA\`kyam .
+brahmAdyAvara\'Na.n vi\`dyAnna bibheti kadA\'chane\`ti .. 12..
+
+yo dUrvA~Nku\'rairya\`jati sa vaishravaNopa\'mo bha\`vati .
+yo lA\'jairya\`jati sa yasho\'vAn bha\`vati . sa medhA\'vAn bha\`vati .
+yo modakasahasre\'Na ya\`jati sa vA~nChitaphalama\'vApno\`ti .
+yaH sAjya sami\'dbhirya\`jati sa sarva.n labhate sa sa\'rva.n la\`bhate .. 13..
+
+aShTau brAhmaNAn samyag grA\'hayi\`tvA sUryavarcha\'svI bha\`vati .
+sUryagrahe ma\'hAna\`dyAM pratimAsannidhau vA ja\`ptvA siddhama\'ntro bha\`vati .
+mahAvighnA\"t pramu\`chyate . mahAdoShA\"t pramu\`chyate . mahApApA\"t pramu\`chyate .
+mahApratyavAyA\"t pramu\`chyate . sa sarvavidbhavati sa sarva\'vidbha\`vati .
+ya e\'va.n ve\`da . ityu\'pa\`niSha\'t .. 14..
+
+OM shAnti\`H shAnti\`H shAnti\'H ..
+
+OM sa\`ha nA\'vavatu . sa\`ha nau\' bhunaktu .
+sa\`ha vI\`ryaM\' karavAvahai .
+te\`ja\`svinA\`vadhI\'tamastu\` mA vi\'dviShA\`vahai\" .
+OM shAnti\`H shAnti\`H shAnti\'H ..
+
+OM bha\`dra.n karNe\'bhiH shR^iNu\`yAma\' devAH . bha\`dra.n pa\'shyemA\`kShabhi\`ryaja\'trAH .
+sthi\`raira~Ngai\"stuShTu\`vA{\m+} sa\'sta\`nUbhi\'H . vyashe\'ma de\`vahi\'ta.n\` yadAyu\'H .
+sva\`sti na\` indro\' vR^i\`ddhashra\'vAH . sva\`sti na\'H pU\`ShA vi\`shvave\'dAH .
+sva\`sti na\`stArkShyo\` ari\'ShTanemiH . sva\`sti no\` bR^iha\`spati\'rdadhAtu ..
+
+OM shAnti\`H shAnti\`H shAnti\'H ..
+
+##
+
+Encoded by Sunder Hattangadi with Vedic accents (Svaras.)
+The accents and re-proofreading by Kirk Wortman, Daya Aithal, NA
+
+\medskip\hrule\obeylines
+
+Please send corrections to sanskrit@cheerful.com
+Last updated \today
+https://sanskritdocuments.org
+
+\end{document}

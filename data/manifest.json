@@ -1,0 +1,17 @@
+{
+  "version": "0.1.0",
+  "suktas": [
+    {
+      "id": "sukta_agni_001",
+      "title": "Agni Sukta (Sample)",
+      "language": "sa",
+      "status": "placeholder"
+    },
+    {
+      "id": "sukta_mrityunjaya_002",
+      "title": "Mahamrityunjaya (Sample)",
+      "language": "sa",
+      "status": "placeholder"
+    }
+  ]
+}

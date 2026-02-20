@@ -1,0 +1,15 @@
+[project]
+name = "veda-karaoke"
+version = "0.1.0"
+description = "Local-first Veda Karaoke MVP"
+requires-python = ">=3.10"
+dependencies = []
+
+[tool.uv]
+package = false
+
+[dependency-groups]
+dev = [
+  "pytest>=8.0.0",
+  "pytest-cov>=5.0.0",
+]
