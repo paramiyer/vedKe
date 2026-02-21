@@ -3,6 +3,7 @@ from __future__ import annotations
 import argparse
 from pathlib import Path
 
+from .alignment import build_timings, load_highlighter, load_tokens, save_timings, validate_timings_payload
 from .highlights import write_highlights_json
 from .karaoke import write_karaoke_json
 from .parser import write_tokens_json
@@ -90,6 +91,37 @@ def _build_pipeline(args: argparse.Namespace) -> int:
     return 0
 
 
+def _align_audio(args: argparse.Namespace) -> int:
+    _, tokens = load_tokens(Path(args.tokens))
+    highlighter = load_highlighter(Path(args.highlighter))
+    payload = build_timings(
+        tokens=tokens,
+        highlighter=highlighter,
+        audio_path=Path(args.audio),
+        audio_url=args.url,
+        engine=args.engine,
+    )
+    out = save_timings(payload, Path(args.out))
+    print(out)
+    return 0
+
+
+def _validate_alignment(args: argparse.Namespace) -> int:
+    import json
+
+    _, tokens = load_tokens(Path(args.tokens))
+    highlighter = load_highlighter(Path(args.highlighter))
+    payload = json.loads(Path(args.timings).read_text(encoding="utf-8"))
+    errors = validate_timings_payload(tokens=tokens, highlighter=highlighter, timings_payload=payload)
+    if errors:
+        print(f"Validation failed with {len(errors)} error(s):")
+        for err in errors:
+            print(f"- {err}")
+        return 1
+    print("Alignment validation passed.")
+    return 0
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(prog="python -m services.itx_pipeline")
     subparsers = parser.add_subparsers(dest="command", required=True)
@@ -145,6 +177,27 @@ def build_parser() -> argparse.ArgumentParser:
     build_pipeline.add_argument("--out", required=True, help="Build slug directory (e.g. build/<slug>)")
     build_pipeline.add_argument("--web", required=True, help="Web destination dir (e.g. apps/web/public/suktas/<slug>)")
     build_pipeline.set_defaults(handler=_build_pipeline)
+
+    align_audio = subparsers.add_parser(
+        "align-audio",
+        help="Build data/alignment/timings.json with strict token-index invariants",
+    )
+    align_audio.add_argument("--tokens", required=True, help="Path to tokens.json")
+    align_audio.add_argument("--highlighter", required=True, help="Path to highlighter/highlights json")
+    align_audio.add_argument("--audio", required=True, help="Path to source mp3")
+    align_audio.add_argument("--out", required=True, help="Output path for timings.json")
+    align_audio.add_argument("--engine", default="whisperx", choices=["whisperx", "fallback"], help="Alignment engine")
+    align_audio.add_argument("--url", default="", help="Source URL for metadata")
+    align_audio.set_defaults(handler=_align_audio)
+
+    validate_alignment = subparsers.add_parser(
+        "validate-alignment",
+        help="Validate tokens/highlighter/timings index and timing invariants",
+    )
+    validate_alignment.add_argument("--tokens", required=True, help="Path to tokens.json")
+    validate_alignment.add_argument("--highlighter", required=True, help="Path to highlighter/highlights json")
+    validate_alignment.add_argument("--timings", required=True, help="Path to timings.json")
+    validate_alignment.set_defaults(handler=_validate_alignment)
 
     return parser
 
