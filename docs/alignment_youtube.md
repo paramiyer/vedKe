@@ -39,6 +39,7 @@ python scripts/align_audio.py \
 ```
 
 If `whisperx` is unavailable or low-confidence, the script automatically falls back to deterministic segment-based timing.
+If `ffprobe` is unavailable, pass `--duration-ms <N>` to run fallback mode offline.
 
 ## Validate alignment
 

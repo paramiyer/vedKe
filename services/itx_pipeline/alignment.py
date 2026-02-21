@@ -123,7 +123,7 @@ def assert_index_invariants(tokens: list[BaselineToken], highlighter: list[Highl
             f"Token count mismatch: tokens={len(tokens)} highlighter={len(highlighter)}. "
             "tokens.json is the baseline source of truth."
         )
-    for i, (token, hl) in enumerate(zip(tokens, highlighter, strict=True)):
+    for i, (token, hl) in enumerate(zip(tokens, highlighter)):
         if token.token_id != hl.token_id:
             raise ValueError(
                 f"Index invariant failed at i={i}: tokens.id={token.token_id} != highlighter.id={hl.token_id}"
@@ -339,7 +339,7 @@ def fallback_segment_timings(tokens: list[BaselineToken], highlighter: list[High
     total_weight = sum(line_weights) or 1
     timings: list[dict[str, Any]] = [{"s": 0, "e": 0, "c": 0.15} for _ in tokens]
     cursor = 0
-    for line_indices, line_weight in zip(lines, line_weights, strict=True):
+    for line_indices, line_weight in zip(lines, line_weights):
         line_span = max(80, int(round(duration_ms * (line_weight / total_weight))))
         line_start = cursor
         line_end = min(duration_ms, line_start + line_span)
@@ -365,16 +365,20 @@ def build_timings(
     audio_path: Path,
     audio_url: str,
     engine: str,
+    duration_ms_override: int | None = None,
 ) -> dict[str, Any]:
     assert_index_invariants(tokens, highlighter)
-    duration_ms = probe_duration_ms(audio_path)
-    wav_path = ensure_wav(audio_path)
+    if duration_ms_override is not None:
+        duration_ms = max(0, int(duration_ms_override))
+    else:
+        duration_ms = probe_duration_ms(audio_path)
 
     method = "fallback"
     final_timings: list[dict[str, Any]]
 
     if engine == "whisperx":
         try:
+            wav_path = ensure_wav(audio_path)
             words = _extract_whisperx_words(wav_path)
             matched = _map_recognized_to_speakable(tokens, words)
             speakable_count = len([t for t in tokens if t.speakable])
@@ -392,7 +396,7 @@ def build_timings(
         final_timings = fallback_segment_timings(tokens, highlighter, duration_ms)
 
     payload_tokens = []
-    for token, timing in zip(tokens, final_timings, strict=True):
+    for token, timing in zip(tokens, final_timings):
         payload_tokens.append(
             {
                 "i": token.i,
@@ -441,7 +445,7 @@ def validate_timings_payload(tokens: list[BaselineToken], highlighter: list[High
 
     prev_s = -1
     prev_e = -1
-    for i, (token, hl) in enumerate(zip(tokens, highlighter, strict=False)):
+    for i, (token, hl) in enumerate(zip(tokens, highlighter)):
         if i >= len(out_tokens):
             break
         row = out_tokens[i]

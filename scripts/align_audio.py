@@ -2,7 +2,12 @@
 from __future__ import annotations
 
 import argparse
+import sys
 from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
 
 from services.itx_pipeline.alignment import (
     build_timings,
@@ -20,6 +25,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--out", required=True, help="Path to output timings.json")
     parser.add_argument("--engine", default="whisperx", choices=["whisperx", "fallback"], help="Alignment engine")
     parser.add_argument("--url", default="", help="Source URL (stored in output metadata)")
+    parser.add_argument("--duration-ms", type=int, default=None, help="Optional duration override when ffprobe is unavailable")
     return parser
 
 
@@ -33,6 +39,7 @@ def main(argv: list[str] | None = None) -> int:
         audio_path=Path(args.audio),
         audio_url=args.url,
         engine=args.engine,
+        duration_ms_override=args.duration_ms,
     )
     out_path = save_timings(payload, Path(args.out))
     print(out_path)

@@ -100,6 +100,7 @@ def _align_audio(args: argparse.Namespace) -> int:
         audio_path=Path(args.audio),
         audio_url=args.url,
         engine=args.engine,
+        duration_ms_override=args.duration_ms,
     )
     out = save_timings(payload, Path(args.out))
     print(out)
@@ -188,6 +189,7 @@ def build_parser() -> argparse.ArgumentParser:
     align_audio.add_argument("--out", required=True, help="Output path for timings.json")
     align_audio.add_argument("--engine", default="whisperx", choices=["whisperx", "fallback"], help="Alignment engine")
     align_audio.add_argument("--url", default="", help="Source URL for metadata")
+    align_audio.add_argument("--duration-ms", type=int, default=None, help="Optional audio duration override for offline fallback")
     align_audio.set_defaults(handler=_align_audio)
 
     validate_alignment = subparsers.add_parser(
