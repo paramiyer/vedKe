@@ -5,6 +5,8 @@ from services.itx_pipeline.alignment import (
     RecognizedWord,
     _map_recognized_to_speakable,
     inject_non_speakable_micro_timings,
+    retime_payload_with_anchors,
+    retime_payload_with_token_offset,
     warp_time_with_anchors,
 )
 from scripts.alignment.text_normalize import normalize_token_text
@@ -59,3 +61,45 @@ def test_anchor_warp_piecewise_linear_interpolation() -> None:
     # halfway between anchor audio points should map halfway between base points
     warped = warp_time_with_anchors(2200.0, anchors, base_token_times)
     assert 1990 <= warped <= 2010
+
+
+def test_retime_payload_with_anchors_applies_piecewise_shift() -> None:
+    payload = {
+        "audio": {"source": "youtube", "url": "", "file": "audio.mp3", "duration_ms": 3000},
+        "tokens": [
+            {"i": 0, "t": "ग", "norm": "ग", "s": 0, "e": 100, "c": 0.7},
+            {"i": 1, "t": "ण", "norm": "ण", "s": 100, "e": 200, "c": 0.7},
+            {"i": 2, "t": "प", "norm": "प", "s": 200, "e": 300, "c": 0.7},
+        ],
+        "meta": {"method": "fallback", "created_at": "2026-01-01T00:00:00+00:00"},
+    }
+    anchors = [
+        {"token_index": 0.0, "audio_time_ms": 50.0},
+        {"token_index": 2.0, "audio_time_ms": 350.0},
+    ]
+    out = retime_payload_with_anchors(payload, anchors)
+    out_tokens = out["tokens"]
+    assert out_tokens[0]["s"] == 50
+    assert out_tokens[1]["s"] == 200
+    assert out_tokens[2]["s"] == 350
+    assert out["meta"]["method"] == "fallback+anchors"
+    assert out["meta"]["anchor_count"] == 2
+
+
+def test_retime_payload_with_token_offset_delays_uniformly() -> None:
+    payload = {
+        "audio": {"source": "youtube", "url": "", "file": "audio.mp3", "duration_ms": 6000},
+        "tokens": [
+            {"i": 0, "t": "अ", "norm": "अ", "s": 0, "e": 100, "c": 0.7},
+            {"i": 1, "t": "आ", "norm": "आ", "s": 100, "e": 200, "c": 0.7},
+            {"i": 2, "t": "इ", "norm": "इ", "s": 200, "e": 300, "c": 0.7},
+            {"i": 3, "t": "ई", "norm": "ई", "s": 300, "e": 400, "c": 0.7},
+        ],
+        "meta": {"method": "fallback", "created_at": "2026-01-01T00:00:00+00:00"},
+    }
+    out = retime_payload_with_token_offset(payload, offset_tokens=1.0)
+    out_tokens = out["tokens"]
+    assert out_tokens[0]["s"] == 100
+    assert out_tokens[1]["s"] == 200
+    assert out["meta"]["method"] == "fallback+token-offset"
+    assert out["meta"]["offset_tokens"] == 1.0

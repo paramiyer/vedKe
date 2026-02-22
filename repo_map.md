@@ -4,15 +4,16 @@
 - `AGENTS.md`: working rules and cost control guardrails.
 - `agent.md`: agent policy reminder; consult `repo_map.md` first.
 - `README.md`: Python test setup + image-karaoke setup and workflow docs.
-- `requirements.txt`: runtime Python dependencies (currently empty placeholder).
-- `requirements-dev.txt`: dev dependencies for local test execution (`pytest`, `pytest-cov`).
+- `pyproject.toml`: canonical Python project metadata + dependencies (managed via `uv`).
+- `requirements.txt`: legacy compatibility file (primary dependency management is via `uv`).
+- `requirements-dev.txt`: legacy dev dependency list (`pytest`, `pytest-cov`); prefer `uv sync`.
 - `docs/SETUP.md`: dependency install and optional PDF conversion setup.
 - `docs/ADD_SUKTA.md`: legacy per-sukta data contract documentation.
 - `docs/FONT_NOTES.md`: rendering consistency notes.
-- `docs/alignment_youtube.md`: YouTube->audio->timings alignment setup/runbook (yt-dlp/ffmpeg/whisperx + fallback path).
+- `docs/alignment_youtube.md`: YouTube->audio->timings alignment setup/runbook (`uv` + Python 3.12 + ffmpeg + optional whisperx).
 - `tools/gen_repo_map.sh`: fallback repo map generator.
 - `tools/pdf_to_png.py`: optional PDF -> PNG utility via `pdf2image`.
-- `scripts/fetch_youtube_audio.py`: downloads best YouTube audio and writes canonical `data/audio/source.mp3`.
+- `scripts/fetch_youtube_audio.py`: downloads best YouTube audio and writes canonical `data/audio/source.mp3` using `python -m yt_dlp` from the active `uv` environment.
 - `scripts/align_audio.py`: CLI wrapper that generates baseline-locked `timings.json` from tokens/highlighter/audio.
 - `scripts/validate_alignment.py`: CLI validator for token/highlighter/timing parity + monotonic constraints.
 - `scripts/alignment/text_normalize.py`: alignment normalization helpers (`norm`, `speakable`).
@@ -61,10 +62,10 @@
 - `services/aligner/`: placeholder Python service package.
 - `services/__init__.py`: marks `services` as an importable package root.
 - `services/itx_pipeline/__main__.py`: module entrypoint for `python -m services.itx_pipeline`.
-- `services/itx_pipeline/cli.py`: CLI surface for `build-tokens`, `validate-tokens`, `audit-charset`, `build-karaoke`, `build-visual`, `build-highlights`, `build-pipeline` (end-to-end reusable run), and `sync-web`.
+- `services/itx_pipeline/cli.py`: CLI surface for `build-tokens`, `validate-tokens`, `audit-charset`, `build-karaoke`, `build-visual`, `build-highlights`, `build-pipeline` (end-to-end reusable run), `align-audio`, `validate-alignment`, `retime-with-anchors`, `retime-with-offset`, and `sync-web`.
 - `services/itx_pipeline/visual.py`: visual pipeline (`.itx` -> PDF via itrans/pdflatex -> SVG pages via pdftocairo) and `visual.json` generation.
 - `services/itx_pipeline/highlights.py`: word-level visual highlight pipeline (PDF text-layer bboxes via `pdftotext`, strict token alignment against `karaoke.json` as source of truth, token-vocab split handling for merged PDF words, and `visual/highlights.json` generation with propagated token `kind`).
-- `services/itx_pipeline/alignment.py`: audio-token alignment engine (WhisperX primary path + deterministic segment fallback), strict index invariants (`tokens == highlights == timings`), punctuation micro-timing injection, monotonic timing enforcement, validator helpers, and anchor warp utility.
+- `services/itx_pipeline/alignment.py`: audio-token alignment engine (WhisperX primary path + deterministic segment fallback), strict index invariants (`tokens == highlights == timings`), punctuation micro-timing injection, monotonic timing enforcement, validator helpers, and anchor/token-offset retime utilities.
 - `services/itx_pipeline/parser.py`: `.itx` content filtering, ITX->Devanagari conversion, tokenization, and tokens.json writer.
 - `services/itx_pipeline/validation.py`: token validation rules, audit reporting, and charset diagnostics.
 - `services/itx_pipeline/karaoke.py`: CP2 builder that converts tokens.json into line-grouped karaoke.json with join metadata and payload validation.

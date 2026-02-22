@@ -96,6 +96,29 @@ function clamp(value: number, min: number, max: number): number {
   return Math.max(min, Math.min(max, value));
 }
 
+function tokenGraphemeCount(text: string): number {
+  const value = text.trim();
+  if (!value) {
+    return 1;
+  }
+  const segmenterCtor = (
+    Intl as unknown as {
+      Segmenter?: new (locales?: string | string[], options?: { granularity?: "grapheme" }) => {
+        segment(input: string): Iterable<unknown>;
+      };
+    }
+  ).Segmenter;
+  if (segmenterCtor) {
+    const segmenter = new segmenterCtor(undefined, { granularity: "grapheme" });
+    let count = 0;
+    for (const _part of segmenter.segment(value)) {
+      count += 1;
+    }
+    return Math.max(1, count);
+  }
+  return Math.max(1, Array.from(value).length);
+}
+
 function validateTimings(raw: unknown): TimingsFile {
   if (!raw || typeof raw !== "object") {
     throw new Error("timings.json must be an object");
@@ -428,6 +451,7 @@ export function VisualPage({ slug }: { slug: string }): JSX.Element {
   const stageRef = useRef<HTMLDivElement | null>(null);
   const imageCanvasRef = useRef<HTMLCanvasElement | null>(null);
   const audioRef = useRef<HTMLAudioElement | null>(null);
+  const [audioElement, setAudioElement] = useState<HTMLAudioElement | null>(null);
   const audioRafRef = useRef<number | null>(null);
   const visualScrollRef = useRef<HTMLDivElement | null>(null);
   const scrollPauseTimerRef = useRef<number | null>(null);
@@ -657,15 +681,15 @@ export function VisualPage({ slug }: { slug: string }): JSX.Element {
   }, [activeToken, pageIndex, tokenToPageIndex]);
 
   useEffect(() => {
-    const audio = audioRef.current;
+    const audio = audioElement;
     if (!audio) {
       return;
     }
     audio.playbackRate = playbackRate;
-  }, [playbackRate]);
+  }, [audioElement, playbackRate]);
 
   useEffect(() => {
-    const audio = audioRef.current;
+    const audio = audioElement;
     if (!audio) {
       return;
     }
@@ -704,7 +728,7 @@ export function VisualPage({ slug }: { slug: string }): JSX.Element {
       audio.removeEventListener("ended", onPause);
       stopRaf();
     };
-  }, [timings?.audio.file]);
+  }, [audioElement, timings?.audio.file]);
 
   useEffect(() => {
     if (!timings || timings.tokens.length === 0 || allTokens.length === 0) {
@@ -720,9 +744,14 @@ export function VisualPage({ slug }: { slug: string }): JSX.Element {
 
     const row = timings.tokens[nextIndex];
     const span = Math.max(1, row.e - row.s);
-    const reveal = clamp((warpedTimeMs - row.s) / span, 0, 1);
+    const tokenText = allTokens[nextIndex]?.deva ?? row.t;
+    const graphemes = tokenGraphemeCount(tokenText);
+    const expectedSpan = Math.max(70, graphemes * 120);
+    const normalizedSpan = clamp(expectedSpan, span * 0.7, span * 1.3);
+    const elapsed = warpedTimeMs - row.s;
+    const reveal = warpedTimeMs >= row.e ? 1 : clamp(elapsed / normalizedSpan, 0, 1);
     setActiveTokenReveal(reveal);
-  }, [allTokens.length, anchors, audioCurrentMs, timings]);
+  }, [allTokens, anchors, audioCurrentMs, timings]);
 
   const fitScale = useMemo(() => {
     if (!page || containerWidth <= 0) {
@@ -743,7 +772,14 @@ export function VisualPage({ slug }: { slug: string }): JSX.Element {
     if (!file) {
       return `/suktas/${slug}/audio.mp3`;
     }
-    return file.startsWith("/") ? file : `/${file}`;
+    const normalized = file.replace(/\\/g, "/");
+    const publicMarker = "/public/";
+    const markerIdx = normalized.indexOf(publicMarker);
+    if (markerIdx >= 0) {
+      const fromPublic = normalized.slice(markerIdx + publicMarker.length);
+      return `/${fromPublic}`.replace(/\/{2,}/g, "/");
+    }
+    return normalized.startsWith("/") ? normalized : `/${normalized}`;
   }, [slug, timings?.audio.file]);
 
   const pointerToSvg = (event: React.MouseEvent<HTMLDivElement>): Point | null => {
@@ -1216,7 +1252,14 @@ export function VisualPage({ slug }: { slug: string }): JSX.Element {
         </button>
       </section>
 
-      <audio ref={audioRef} src={audioSrc} preload="metadata" />
+      <audio
+        ref={(el) => {
+          audioRef.current = el;
+          setAudioElement(el);
+        }}
+        src={audioSrc}
+        preload="metadata"
+      />
 
       <section style={{ border: "1px solid #ddd", borderRadius: 6, padding: 10, display: "grid", gap: 6 }}>
         <strong>Karaoke token focus</strong>

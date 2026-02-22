@@ -1,9 +1,19 @@
 from __future__ import annotations
 
 import argparse
+import json
 from pathlib import Path
 
-from .alignment import build_timings, load_highlighter, load_tokens, save_timings, validate_timings_payload
+from .alignment import (
+    build_timings,
+    load_anchor_points,
+    load_highlighter,
+    load_tokens,
+    retime_payload_with_anchors,
+    retime_payload_with_token_offset,
+    save_timings,
+    validate_timings_payload,
+)
 from .highlights import write_highlights_json
 from .karaoke import write_karaoke_json
 from .parser import write_tokens_json
@@ -108,8 +118,6 @@ def _align_audio(args: argparse.Namespace) -> int:
 
 
 def _validate_alignment(args: argparse.Namespace) -> int:
-    import json
-
     _, tokens = load_tokens(Path(args.tokens))
     highlighter = load_highlighter(Path(args.highlighter))
     payload = json.loads(Path(args.timings).read_text(encoding="utf-8"))
@@ -120,6 +128,32 @@ def _validate_alignment(args: argparse.Namespace) -> int:
             print(f"- {err}")
         return 1
     print("Alignment validation passed.")
+    return 0
+
+
+def _retime_with_anchors(args: argparse.Namespace) -> int:
+    timings_path = Path(args.timings)
+    anchors_path = Path(args.anchors)
+    payload = json.loads(timings_path.read_text(encoding="utf-8"))
+    anchors = load_anchor_points(anchors_path=anchors_path)
+    if len(anchors) < 1:
+        raise ValueError("No valid anchors found. Need at least one anchor entry.")
+
+    out_payload = retime_payload_with_anchors(timings_payload=payload, anchors=anchors)
+    out = save_timings(out_payload, Path(args.out))
+    print(out)
+    return 0
+
+
+def _retime_with_offset(args: argparse.Namespace) -> int:
+    timings_path = Path(args.timings)
+    payload = json.loads(timings_path.read_text(encoding="utf-8"))
+    out_payload = retime_payload_with_token_offset(
+        timings_payload=payload,
+        offset_tokens=float(args.offset_tokens),
+    )
+    out = save_timings(out_payload, Path(args.out))
+    print(out)
     return 0
 
 
@@ -200,6 +234,33 @@ def build_parser() -> argparse.ArgumentParser:
     validate_alignment.add_argument("--highlighter", required=True, help="Path to highlighter/highlights json")
     validate_alignment.add_argument("--timings", required=True, help="Path to timings.json")
     validate_alignment.set_defaults(handler=_validate_alignment)
+
+    retime_with_anchors = subparsers.add_parser(
+        "retime-with-anchors",
+        help="Apply anchor points to an existing timings.json and emit corrected timings",
+    )
+    retime_with_anchors.add_argument("--timings", required=True, help="Path to existing timings.json")
+    retime_with_anchors.add_argument(
+        "--anchors",
+        required=True,
+        help="Path to anchors JSON (array or object with anchors[])",
+    )
+    retime_with_anchors.add_argument("--out", required=True, help="Output path for corrected timings.json")
+    retime_with_anchors.set_defaults(handler=_retime_with_anchors)
+
+    retime_with_offset = subparsers.add_parser(
+        "retime-with-offset",
+        help="Apply a global token-index offset to timings for fast lead/lag correction",
+    )
+    retime_with_offset.add_argument("--timings", required=True, help="Path to existing timings.json")
+    retime_with_offset.add_argument(
+        "--offset-tokens",
+        required=True,
+        type=float,
+        help="Positive delays highlight (if it is ahead); negative advances highlight",
+    )
+    retime_with_offset.add_argument("--out", required=True, help="Output path for corrected timings.json")
+    retime_with_offset.set_defaults(handler=_retime_with_offset)
 
     return parser
 

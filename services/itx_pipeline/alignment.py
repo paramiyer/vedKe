@@ -408,11 +408,16 @@ def build_timings(
             }
         )
 
+    audio_file = str(audio_path).replace("\\", "/")
+    public_prefix = "apps/web/public/"
+    if public_prefix in audio_file:
+        audio_file = audio_file.split(public_prefix, 1)[1]
+
     return {
         "audio": {
             "source": "youtube",
             "url": audio_url,
-            "file": str(audio_path),
+            "file": audio_file,
             "duration_ms": duration_ms,
         },
         "tokens": payload_tokens,
@@ -534,3 +539,218 @@ def warp_time_with_anchors(base_time_ms: float, anchors: list[dict[str, float]],
             return base_a + ratio * (base_b - base_a)
 
     return base_time_ms
+
+
+def load_anchor_points(anchors_path: Path) -> list[dict[str, float]]:
+    payload = json.loads(anchors_path.read_text(encoding="utf-8"))
+    raw_points: Any
+    if isinstance(payload, list):
+        raw_points = payload
+    elif isinstance(payload, dict):
+        raw_points = payload.get("anchors", [])
+    else:
+        raw_points = []
+
+    if not isinstance(raw_points, list):
+        raise ValueError("anchors payload must be an array or object with anchors[]")
+
+    points: list[dict[str, float]] = []
+    seen_token_indices: set[int] = set()
+    for row in raw_points:
+        if not isinstance(row, dict):
+            continue
+        token_index = int(row.get("token_index", -1))
+        audio_time_ms = float(row.get("audio_time_ms", -1))
+        if token_index < 0 or audio_time_ms < 0:
+            continue
+        # Keep the first anchor for a token index to maintain deterministic behavior.
+        if token_index in seen_token_indices:
+            continue
+        seen_token_indices.add(token_index)
+        points.append({"token_index": float(token_index), "audio_time_ms": audio_time_ms})
+
+    points.sort(key=lambda a: (a["token_index"], a["audio_time_ms"]))
+    return points
+
+
+def map_base_to_audio_time(base_time_ms: float, anchors: list[dict[str, float]], base_token_times: list[float]) -> float:
+    if not anchors:
+        return base_time_ms
+    clean = sorted(
+        [a for a in anchors if "token_index" in a and "audio_time_ms" in a],
+        key=lambda a: (float(a["token_index"]), float(a["audio_time_ms"])),
+    )
+    if not clean:
+        return base_time_ms
+
+    points = []
+    for anchor in clean:
+        idx = int(anchor["token_index"])
+        if idx < 0 or idx >= len(base_token_times):
+            continue
+        points.append((base_token_times[idx], float(anchor["audio_time_ms"])))
+    if not points:
+        return base_time_ms
+
+    # Inverse of warp_time_with_anchors (audio->base): map base->audio.
+    points.sort(key=lambda p: p[0])
+
+    if base_time_ms <= points[0][0]:
+        return points[0][1] + (base_time_ms - points[0][0])
+    if base_time_ms >= points[-1][0]:
+        return points[-1][1] + (base_time_ms - points[-1][0])
+
+    for (base_a, audio_a), (base_b, audio_b) in zip(points, points[1:], strict=False):
+        if base_a <= base_time_ms <= base_b:
+            span = max(1e-6, base_b - base_a)
+            ratio = (base_time_ms - base_a) / span
+            return audio_a + ratio * (audio_b - audio_a)
+    return base_time_ms
+
+
+def retime_payload_with_anchors(timings_payload: dict[str, Any], anchors: list[dict[str, float]]) -> dict[str, Any]:
+    tokens_raw = timings_payload.get("tokens")
+    if not isinstance(tokens_raw, list):
+        raise ValueError("timings.json missing tokens[]")
+    if not anchors:
+        return timings_payload
+
+    base_token_times: list[float] = []
+    for row in tokens_raw:
+        if not isinstance(row, dict):
+            base_token_times.append(0.0)
+            continue
+        base_token_times.append(float(row.get("s", 0)))
+
+    remapped: list[dict[str, Any]] = []
+    for idx, row in enumerate(tokens_raw):
+        if not isinstance(row, dict):
+            continue
+        s = float(row.get("s", 0))
+        e = float(row.get("e", s))
+        s_new = int(round(map_base_to_audio_time(s, anchors, base_token_times)))
+        e_new = int(round(map_base_to_audio_time(e, anchors, base_token_times)))
+        remapped.append(
+            {
+                "i": int(row.get("i", idx)),
+                "t": str(row.get("t", "")),
+                "norm": str(row.get("norm", "")),
+                "s": s_new,
+                "e": max(s_new, e_new),
+                "c": float(row.get("c", 0.0)),
+            }
+        )
+
+    audio = timings_payload.get("audio")
+    duration_ms = int(audio.get("duration_ms", 0)) if isinstance(audio, dict) else 0
+    duration_cap = max(duration_ms, max((int(item["e"]) for item in remapped), default=0))
+    remapped = _enforce_monotonic(remapped, duration_cap)
+
+    out = dict(timings_payload)
+    out["tokens"] = remapped
+    if isinstance(audio, dict):
+        patched_audio = dict(audio)
+        patched_audio["duration_ms"] = max(duration_ms, int(remapped[-1]["e"]) if remapped else duration_ms)
+        out["audio"] = patched_audio
+
+    meta = out.get("meta")
+    method = "anchors"
+    if isinstance(meta, dict):
+        prev_method = str(meta.get("method", "")).strip()
+        if prev_method:
+            method = f"{prev_method}+anchors"
+        patched_meta = dict(meta)
+    else:
+        patched_meta = {}
+    patched_meta["method"] = method
+    patched_meta["anchor_count"] = len(anchors)
+    patched_meta["retimed_at"] = datetime.now(timezone.utc).isoformat()
+    out["meta"] = patched_meta
+
+    return out
+
+
+def _interp_index(values: list[float], idx: float) -> float:
+    if not values:
+        return 0.0
+    if idx <= 0:
+        if len(values) == 1:
+            return values[0]
+        return values[0] + idx * (values[1] - values[0])
+    last = len(values) - 1
+    if idx >= last:
+        if len(values) == 1:
+            return values[0]
+        return values[last] + (idx - last) * (values[last] - values[last - 1])
+    lo = int(math.floor(idx))
+    hi = min(last, lo + 1)
+    if hi == lo:
+        return values[lo]
+    ratio = idx - lo
+    return values[lo] + ratio * (values[hi] - values[lo])
+
+
+def retime_payload_with_token_offset(timings_payload: dict[str, Any], offset_tokens: float) -> dict[str, Any]:
+    tokens_raw = timings_payload.get("tokens")
+    if not isinstance(tokens_raw, list):
+        raise ValueError("timings.json missing tokens[]")
+    if abs(offset_tokens) < 1e-9:
+        return timings_payload
+
+    starts: list[float] = []
+    ends: list[float] = []
+    for row in tokens_raw:
+        if not isinstance(row, dict):
+            starts.append(0.0)
+            ends.append(0.0)
+            continue
+        s = float(row.get("s", 0))
+        e = float(row.get("e", s))
+        starts.append(s)
+        ends.append(max(s, e))
+
+    remapped: list[dict[str, Any]] = []
+    for i, row in enumerate(tokens_raw):
+        if not isinstance(row, dict):
+            continue
+        src = i + offset_tokens
+        s_new = int(round(_interp_index(starts, src)))
+        e_new = int(round(_interp_index(ends, src)))
+        remapped.append(
+            {
+                "i": int(row.get("i", i)),
+                "t": str(row.get("t", "")),
+                "norm": str(row.get("norm", "")),
+                "s": s_new,
+                "e": max(s_new, e_new),
+                "c": float(row.get("c", 0.0)),
+            }
+        )
+
+    audio = timings_payload.get("audio")
+    duration_ms = int(audio.get("duration_ms", 0)) if isinstance(audio, dict) else 0
+    duration_cap = max(duration_ms, max((int(item["e"]) for item in remapped), default=0))
+    remapped = _enforce_monotonic(remapped, duration_cap)
+
+    out = dict(timings_payload)
+    out["tokens"] = remapped
+    if isinstance(audio, dict):
+        patched_audio = dict(audio)
+        patched_audio["duration_ms"] = max(duration_ms, int(remapped[-1]["e"]) if remapped else duration_ms)
+        out["audio"] = patched_audio
+
+    meta = out.get("meta")
+    method = "token-offset"
+    if isinstance(meta, dict):
+        prev_method = str(meta.get("method", "")).strip()
+        if prev_method:
+            method = f"{prev_method}+token-offset"
+        patched_meta = dict(meta)
+    else:
+        patched_meta = {}
+    patched_meta["method"] = method
+    patched_meta["offset_tokens"] = offset_tokens
+    patched_meta["retimed_at"] = datetime.now(timezone.utc).isoformat()
+    out["meta"] = patched_meta
+
+    return out
